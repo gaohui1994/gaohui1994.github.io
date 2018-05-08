@@ -2,105 +2,112 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/06-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/</loc>
+    <loc>http://yoursite.com/2018/05/08/hello-world/</loc>
+    
+    <lastmod>2018-05-08T00:58:03.617Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/05/08/react/06-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/06-%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/</loc>
     
     <lastmod>2018-05-08T00:52:18.304Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/22-%E7%BB%84%E5%90%88%E5%92%8C%E7%BB%A7%E6%89%BF/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/22-%E7%BB%84%E5%90%88%E5%92%8C%E7%BB%A7%E6%89%BF/22-%E7%BB%84%E5%90%88%E5%92%8C%E7%BB%A7%E6%89%BF/</loc>
     
     <lastmod>2018-05-08T00:50:15.950Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/23-react%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/23-react%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/23-react%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</loc>
     
     <lastmod>2018-05-08T00:49:55.454Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/555-1-react%E5%9F%BA%E6%9C%AC%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/555-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/555-1-react%E5%9F%BA%E6%9C%AC%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2018-05-08T00:49:49.165Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/01-react%E5%85%A5%E9%97%A8/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/01-react%E5%85%A5%E9%97%A8/01-react%E5%85%A5%E9%97%A8/</loc>
     
     <lastmod>2018-05-08T00:42:47.547Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/</loc>
     
     <lastmod>2018-05-08T00:41:29.337Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/16-redux/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/16-redux/16-redux/</loc>
     
     <lastmod>2018-05-08T00:41:14.464Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/12-router/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/12-router/12-router/</loc>
     
     <lastmod>2018-05-08T00:41:02.421Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/10-forms/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/10-form/10-forms/</loc>
     
     <lastmod>2018-05-08T00:40:47.420Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/08-fetchApi-%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/08-%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82/08-fetchApi-%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82/</loc>
     
     <lastmod>2018-05-08T00:40:36.587Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/07-%E7%BB%84%E4%BB%B6%E8%A1%A5%E5%85%85/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/07-%E7%BB%84%E4%BB%B6%E8%A1%A5%E5%85%85/07-%E7%BB%84%E4%BB%B6%E8%A1%A5%E5%85%85/</loc>
     
     <lastmod>2018-05-08T00:40:22.704Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/05-state%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/05-state%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/05-state%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
     
     <lastmod>2018-05-08T00:40:00.388Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/04-%E7%BB%84%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/04-%E7%BB%84%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/04-%E7%BB%84%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2018-05-08T00:39:42.075Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/02-jsx%E8%AF%AD%E6%B3%95/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/02-jsx%E8%AF%AD%E6%B3%95/02-jsx%E8%AF%AD%E6%B3%95/</loc>
     
     <lastmod>2018-05-08T00:39:25.715Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/05/08/react/00-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83/</loc>
+    <loc>http://yoursite.com/2018/05/08/react/00-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83/00-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83/</loc>
     
     <lastmod>2018-05-08T00:38:56.423Z</lastmod>
     
@@ -124,13 +131,6 @@
     <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2018-05-07T22:37:51.180Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/05/08/hello-world/</loc>
-    
-    <lastmod>2018-05-07T22:30:03.042Z</lastmod>
     
   </url>
   
