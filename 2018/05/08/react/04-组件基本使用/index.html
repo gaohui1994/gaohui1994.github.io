@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Hexo</title>
+    <title>组件 | Hexo</title>
     
     
-        <meta name="keywords" content="Hexo" />
+        <meta name="keywords" content="组件" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="组件什么是组件 组成的部件  组件使你可以将 UI 划分为一个一个独立，可复用的小部件，并可以对每个部件进行单独的设计。  从定义上来说， 组件就像JavaScript的函数。封装内容, 达到重用的目的.  组件可以接收任意输入(称为”props”)， 并返回 React 元素，用以描述屏幕显示内容  为什么使用组件 封装  重用   如何使用组件 在使用组件的时候, 推荐使用类组件的形式  注意">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="组件">
 <meta property="og:url" content="http://yoursite.com/2018/05/08/react/04-组件基本使用/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="组件什么是组件 组成的部件  组件使你可以将 UI 划分为一个一个独立，可复用的小部件，并可以对每个部件进行单独的设计。  从定义上来说， 组件就像JavaScript的函数。封装内容, 达到重用的目的.  组件可以接收任意输入(称为”props”)， 并返回 React 元素，用以描述屏幕显示内容  为什么使用组件 封装  重用   如何使用组件 在使用组件的时候, 推荐使用类组件的形式  注意">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T06:15:10.929Z">
+<meta property="og:updated_time" content="2018-05-08T00:39:42.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="组件">
 <meta name="twitter:description" content="组件什么是组件 组成的部件  组件使你可以将 UI 划分为一个一个独立，可复用的小部件，并可以对每个部件进行单独的设计。  从定义上来说， 组件就像JavaScript的函数。封装内容, 达到重用的目的.  组件可以接收任意输入(称为”props”)， 并返回 React 元素，用以描述屏幕显示内容  为什么使用组件 封装  重用   如何使用组件 在使用组件的时候, 推荐使用类组件的形式  注意">
     
 
@@ -80,7 +80,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -99,10 +99,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -133,7 +133,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
     </div>
 
                 </td>
@@ -150,7 +150,7 @@
         
     <div class="widget-wrap" id='categories'>
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>Categorias</span>
             &nbsp;
             <a id='allExpand' href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -166,7 +166,7 @@
                             &nbsp;
                             react
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/"></a></li>  <li class="file"><a href="/2018/05/08/react/01-react入门/"></a></li>  <li class="file active"><a href="/2018/05/08/react/04-组件基本使用/"></a></li>  <li class="file"><a href="/2018/05/08/react/07-组件补充/"></a></li>  <li class="file"><a href="/2018/05/08/react/02-jsx语法/"></a></li>  <li class="file"><a href="/2018/05/08/react/06-组件传值/"></a></li>  <li class="file"><a href="/2018/05/08/react/08-fetchApi-数据请求/"></a></li>  <li class="file"><a href="/2018/05/08/react/10-forms/"></a></li>  <li class="file"><a href="/2018/05/08/react/12-router/"></a></li>  <li class="file"><a href="/2018/05/08/react/16-redux/"></a></li>  <li class="file"><a href="/2018/05/08/react/21-状态提升/"></a></li>  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/"></a></li>  <li class="file"><a href="/2018/05/08/react/555-1-react基本开发环境搭建/"></a></li>  <li class="file"><a href="/2018/05/08/react/22-组合和继承/"></a></li>  <li class="file"><a href="/2018/05/08/react/23-react编程思想/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/">react优质学习资源</a></li>  <li class="file"><a href="/2018/05/08/react/01-react入门/"></a></li>  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/">state和生命周期</a></li>  <li class="file active"><a href="/2018/05/08/react/04-组件基本使用/">组件</a></li>  <li class="file"><a href="/2018/05/08/react/06-组件传值/"></a></li>  <li class="file"><a href="/2018/05/08/react/02-jsx语法/">jsx语法</a></li>  <li class="file"><a href="/2018/05/08/react/07-组件补充/">组件补充</a></li>  <li class="file"><a href="/2018/05/08/react/08-fetchApi-数据请求/">react数据请求</a></li>  <li class="file"><a href="/2018/05/08/react/16-redux/">redux</a></li>  <li class="file"><a href="/2018/05/08/react/10-forms/">forms</a></li>  <li class="file"><a href="/2018/05/08/react/12-router/">react-router</a></li>  <li class="file"><a href="/2018/05/08/react/22-组合和继承/"></a></li>  <li class="file"><a href="/2018/05/08/react/21-状态提升/">状态提升</a></li>  <li class="file"><a href="/2018/05/08/react/23-react编程思想/">react编程思想</a></li>  <li class="file"><a href="/2018/05/08/react/555-1-react基本开发环境搭建/"></a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/2018/05/08/hello-world/">Hello World</a></li>  </ul> 
     </div>
@@ -243,6 +243,51 @@
     <div class="article-inner">
         
         
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/04-组件基本使用/">
+            <time datetime="2018-05-08T00:22:57.901Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/04-组件基本使用.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/04-组件基本使用.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/04-组件基本使用.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            组件
+        </h1>
+    
+
+            </header>
+        
         
         <div class="article-entry" itemprop="articleBody">
         
@@ -288,18 +333,18 @@
 <nav id="article-nav">
     
         <a href="/2018/05/08/react/05-state和生命周期/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">Más nuevo</strong>
             <div class="article-nav-title">
                 
-                    (no title)
+                    state和生命周期
                 
             </div>
         </a>
     
     
         <a href="/2018/05/08/react/02-jsx语法/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title"></div>
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">jsx语法</div>
         </a>
     
 </nav>

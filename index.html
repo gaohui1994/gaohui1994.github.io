@@ -76,7 +76,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -95,10 +95,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -129,7 +129,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
     </div>
 
                 </td>
@@ -146,7 +146,7 @@
         
     <div class="widget-wrap" id='categories'>
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>Categorias</span>
             &nbsp;
             <a id='allExpand' href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -162,7 +162,7 @@
                             &nbsp;
                             react
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/"></a></li>  <li class="file"><a href="/2018/05/08/react/01-react入门/"></a></li>  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/"></a></li>  <li class="file"><a href="/2018/05/08/react/07-组件补充/"></a></li>  <li class="file"><a href="/2018/05/08/react/02-jsx语法/"></a></li>  <li class="file"><a href="/2018/05/08/react/06-组件传值/"></a></li>  <li class="file"><a href="/2018/05/08/react/08-fetchApi-数据请求/"></a></li>  <li class="file"><a href="/2018/05/08/react/10-forms/"></a></li>  <li class="file"><a href="/2018/05/08/react/12-router/"></a></li>  <li class="file"><a href="/2018/05/08/react/16-redux/"></a></li>  <li class="file"><a href="/2018/05/08/react/21-状态提升/"></a></li>  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/"></a></li>  <li class="file"><a href="/2018/05/08/react/555-1-react基本开发环境搭建/"></a></li>  <li class="file"><a href="/2018/05/08/react/22-组合和继承/"></a></li>  <li class="file"><a href="/2018/05/08/react/23-react编程思想/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/">react优质学习资源</a></li>  <li class="file"><a href="/2018/05/08/react/01-react入门/"></a></li>  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/">state和生命周期</a></li>  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/">组件</a></li>  <li class="file"><a href="/2018/05/08/react/06-组件传值/"></a></li>  <li class="file"><a href="/2018/05/08/react/02-jsx语法/">jsx语法</a></li>  <li class="file"><a href="/2018/05/08/react/07-组件补充/">组件补充</a></li>  <li class="file"><a href="/2018/05/08/react/08-fetchApi-数据请求/">react数据请求</a></li>  <li class="file"><a href="/2018/05/08/react/16-redux/">redux</a></li>  <li class="file"><a href="/2018/05/08/react/10-forms/">forms</a></li>  <li class="file"><a href="/2018/05/08/react/12-router/">react-router</a></li>  <li class="file"><a href="/2018/05/08/react/22-组合和继承/"></a></li>  <li class="file"><a href="/2018/05/08/react/21-状态提升/">状态提升</a></li>  <li class="file"><a href="/2018/05/08/react/23-react编程思想/">react编程思想</a></li>  <li class="file"><a href="/2018/05/08/react/555-1-react基本开发环境搭建/"></a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/2018/05/08/hello-world/">Hello World</a></li>  </ul> 
     </div>
@@ -264,11 +264,11 @@
                 
                 
                     
-                    <p><h1 id="基本开发环境"><a href="#基本开发环境" class="headerlink" title="基本开发环境"></a>基本开发环境</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><blockquote>
+                    <p><hr>
+<h2 id="title-基本开发环境"><a href="#title-基本开发环境" class="headerlink" title="title: 基本开发环境"></a>title: 基本开发环境</h2><h1 id="基本开发环境"><a href="#基本开发环境" class="headerlink" title="基本开发环境"></a>基本开发环境</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><blockquote>
 <p>在页面中使用引入</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--react的核心库--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><blockquote>
 <p>
                 
             
@@ -293,6 +293,51 @@
         <article id="post-react/23-react编程思想" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/23-react编程思想/">
+            <time datetime="2018-05-08T00:22:58.120Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/23-react编程思想.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/23-react编程思想.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/23-react编程思想.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/23-react编程思想/">react编程思想</a>
+        </h1>
+    
+
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -335,10 +380,14 @@
                     
                     
                 
+                    
+                    
+                
             
         
         
-            <h2 id="组合和继承"><a href="#组合和继承" class="headerlink" title="组合和继承"></a>组合和继承</h2>
+            <hr>
+<h2 id="title-组合和继承"><a href="#title-组合和继承" class="headerlink" title="title: 组合和继承"></a>title: 组合和继承</h2><h2 id="组合和继承"><a href="#组合和继承" class="headerlink" title="组合和继承"></a>组合和继承</h2>
             </div>
         
         <footer class="article-footer">
@@ -356,6 +405,51 @@
     <div class="article-inner">
         
         
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/21-状态提升/">
+            <time datetime="2018-05-08T00:22:58.105Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/21-状态提升.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/21-状态提升.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/21-状态提升.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/21-状态提升/">状态提升</a>
+        </h1>
+    
+
+            </header>
+        
         
         <div class="article-entry" itemprop="articleBody">
         
@@ -369,7 +463,7 @@
             
         
         
-            <h2 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h2>
+            <h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1>
             </div>
         
         <footer class="article-footer">
@@ -386,6 +480,51 @@
         <article id="post-react/16-redux" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/16-redux/">
+            <time datetime="2018-05-08T00:22:58.105Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/16-redux.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/16-redux.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/16-redux.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/16-redux/">redux</a>
+        </h1>
+    
+
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -433,6 +572,51 @@
         <article id="post-react/12-router" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/12-router/">
+            <time datetime="2018-05-08T00:22:58.089Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/12-router.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/12-router.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/12-router.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/12-router/">react-router</a>
+        </h1>
+    
+
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -488,6 +672,51 @@
     <div class="article-inner">
         
         
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/10-forms/">
+            <time datetime="2018-05-08T00:22:58.073Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/10-forms.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/10-forms.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/10-forms.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/10-forms/">forms</a>
+        </h1>
+    
+
+            </header>
+        
         
         <div class="article-entry" itemprop="articleBody">
         
@@ -542,6 +771,51 @@
     <div class="article-inner">
         
         
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/08-fetchApi-数据请求/">
+            <time datetime="2018-05-08T00:22:58.042Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/08-fetchApi-数据请求.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/08-fetchApi-数据请求.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/08-fetchApi-数据请求.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/08-fetchApi-数据请求/">react数据请求</a>
+        </h1>
+    
+
+            </header>
+        
         
         <div class="article-entry" itemprop="articleBody">
         
@@ -595,6 +869,51 @@
         <article id="post-react/07-组件补充" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/react/">react</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/react/07-组件补充/">
+            <time datetime="2018-05-08T00:22:57.995Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/react/07-组件补充.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/react/07-组件补充.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/react/07-组件补充.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/react/07-组件补充/">组件补充</a>
+        </h1>
+    
+
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -674,11 +993,11 @@
                 
                 
                     
-                    <p><h1 id="组件传值"><a href="#组件传值" class="headerlink" title="组件传值"></a>组件传值</h1><blockquote>
+                    <p><hr>
+<h2 id="title-组件传值"><a href="#title-组件传值" class="headerlink" title="title: 组件传值"></a>title: 组件传值</h2><h1 id="组件传值"><a href="#组件传值" class="headerlink" title="组件传值"></a>组件传值</h1><blockquote>
 <p>每个组件 的作用域都是独立的, 有时候需要在组件之间完成数据的传递,需要通过组件传值的方式来实现</p>
 </blockquote>
 <p><strong>组件传值可以分为以下三类</strong></p>
-<ul>
 <p>
                 
             
@@ -701,7 +1020,7 @@
 
     
         <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Siguiente  &raquo;</a>
         </nav>
     
 </section>
