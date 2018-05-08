@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-08T00:42:08.576Z</updated>
+  <updated>2018-05-08T00:49:49.165Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>基本开发环境</title>
     <link href="http://yoursite.com/2018/05/08/react/555-1-react%E5%9F%BA%E6%9C%AC%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2018/05/08/react/555-1-react基本开发环境搭建/</id>
     <published>2018-05-08T00:22:58.136Z</published>
-    <updated>2018-05-08T00:42:08.576Z</updated>
+    <updated>2018-05-08T00:49:49.165Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="title-基本开发环境"><a href="#title-基本开发环境" class="headerlink" title="title: 基本开发环境"></a>title: 基本开发环境</h2><h1 id="基本开发环境"><a href="#基本开发环境" class="headerlink" title="基本开发环境"></a>基本开发环境</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><blockquote><p>在页面中使用引入</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--react的核心库--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><blockquote><p>使用 create-react-app 快速构建 React 开发环境</p></blockquote><h3 id="安装项目模板"><a href="#安装项目模板" class="headerlink" title="安装项目模板"></a>安装项目模板</h3><blockquote><p>基于webpack快速搭建开发环境</p></blockquote><p><strong>1.全局安装开发环境</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></figure><p><strong>2.创建react项目</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app my-app</span><br></pre></td></tr></table></figure><p><strong>3.切换目录</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd my-app</span><br><span class="line"></span><br><span class="line">辅助cmd命令: </span><br><span class="line">        mkdir</span><br><span class="line">        del</span><br><span class="line">        rmdir</span><br><span class="line">        tree</span><br></pre></td></tr></table></figure><p><strong>4.启动应用程序</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure><h3 id="目录结构解析"><a href="#目录结构解析" class="headerlink" title="目录结构解析"></a>目录结构解析</h3><blockquote><p>使用 tree /f &gt; tree.txt 命令生成项目目录结构</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├─ .gitignore</span><br><span class="line">│  package.json</span><br><span class="line">│  README.md</span><br><span class="line">│  </span><br><span class="line">├─public</span><br><span class="line">│      favicon.ico</span><br><span class="line">│      index.html</span><br><span class="line">│      manifest.json</span><br><span class="line">│      </span><br><span class="line">└─src</span><br><span class="line">        App.css</span><br><span class="line">        App.js</span><br><span class="line">        App.test.js</span><br><span class="line">        index.css</span><br><span class="line">        index.js</span><br><span class="line">        logo.svg</span><br><span class="line">        registerServiceWorker.js</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="基本开发环境"><a href="#基本开发环境" class="headerlink" title="基本开发环境"></a>基本开发环境</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><blockquote><p>在页面中使用引入</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--react的核心库--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><blockquote><p>使用 create-react-app 快速构建 React 开发环境</p></blockquote><h3 id="安装项目模板"><a href="#安装项目模板" class="headerlink" title="安装项目模板"></a>安装项目模板</h3><blockquote><p>基于webpack快速搭建开发环境</p></blockquote><p><strong>1.全局安装开发环境</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></figure><p><strong>2.创建react项目</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app my-app</span><br></pre></td></tr></table></figure><p><strong>3.切换目录</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd my-app</span><br><span class="line"></span><br><span class="line">辅助cmd命令: </span><br><span class="line">        mkdir</span><br><span class="line">        del</span><br><span class="line">        rmdir</span><br><span class="line">        tree</span><br></pre></td></tr></table></figure><p><strong>4.启动应用程序</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure><h3 id="目录结构解析"><a href="#目录结构解析" class="headerlink" title="目录结构解析"></a>目录结构解析</h3><blockquote><p>使用 tree /f &gt; tree.txt 命令生成项目目录结构</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├─ .gitignore</span><br><span class="line">│  package.json</span><br><span class="line">│  README.md</span><br><span class="line">│  </span><br><span class="line">├─public</span><br><span class="line">│      favicon.ico</span><br><span class="line">│      index.html</span><br><span class="line">│      manifest.json</span><br><span class="line">│      </span><br><span class="line">└─src</span><br><span class="line">        App.css</span><br><span class="line">        App.js</span><br><span class="line">        App.test.js</span><br><span class="line">        index.css</span><br><span class="line">        index.js</span><br><span class="line">        logo.svg</span><br><span class="line">        registerServiceWorker.js</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;hr&gt;
-&lt;h2 id=&quot;title-基本开发环境&quot;&gt;&lt;a href=&quot;#title-基本开发环境&quot; class=&quot;headerlink&quot; title=&quot;title: 基本开发环境&quot;&gt;&lt;/a&gt;title: 基本开发环境&lt;/h2&gt;&lt;h1 id=&quot;基本开发环境&quot;&gt;&lt;a href=&quot;#
+        &lt;h1 id=&quot;基本开发环境&quot;&gt;&lt;a href=&quot;#基本开发环境&quot; class=&quot;headerlink&quot; title=&quot;基本开发环境&quot;&gt;&lt;/a&gt;基本开发环境&lt;/h1&gt;&lt;h2 id=&quot;基本使用&quot;&gt;&lt;a href=&quot;#基本使用&quot; class=&quot;headerlink&quot; title=&quot;基
       
     
     </summary>
@@ -45,7 +44,7 @@
     <link href="http://yoursite.com/2018/05/08/react/23-react%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/"/>
     <id>http://yoursite.com/2018/05/08/react/23-react编程思想/</id>
     <published>2018-05-08T00:22:58.120Z</published>
-    <updated>2018-05-08T00:41:56.992Z</updated>
+    <updated>2018-05-08T00:49:55.454Z</updated>
     
     <content type="html"><![CDATA[<h1 id="react编程思想"><a href="#react编程思想" class="headerlink" title="react编程思想"></a>react编程思想</h1>]]></content>
     
@@ -64,43 +63,19 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>组合和继承</title>
     <link href="http://yoursite.com/2018/05/08/react/22-%E7%BB%84%E5%90%88%E5%92%8C%E7%BB%A7%E6%89%BF/"/>
     <id>http://yoursite.com/2018/05/08/react/22-组合和继承/</id>
     <published>2018-05-08T00:22:58.120Z</published>
-    <updated>2018-05-08T00:41:42.964Z</updated>
+    <updated>2018-05-08T00:50:15.950Z</updated>
     
-    <content type="html"><![CDATA[<hr><h2 id="title-组合和继承"><a href="#title-组合和继承" class="headerlink" title="title: 组合和继承"></a>title: 组合和继承</h2><h2 id="组合和继承"><a href="#组合和继承" class="headerlink" title="组合和继承"></a>组合和继承</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;hr&gt;
-&lt;h2 id=&quot;title-组合和继承&quot;&gt;&lt;a href=&quot;#title-组合和继承&quot; class=&quot;headerlink&quot; title=&quot;title: 组合和继承&quot;&gt;&lt;/a&gt;title: 组合和继承&lt;/h2&gt;&lt;h2 id=&quot;组合和继承&quot;&gt;&lt;a href=&quot;#组合和继承
-      
-    
-    </summary>
-    
-      <category term="react" scheme="http://yoursite.com/categories/react/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>状态提升</title>
-    <link href="http://yoursite.com/2018/05/08/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/"/>
-    <id>http://yoursite.com/2018/05/08/react/21-状态提升/</id>
-    <published>2018-05-08T00:22:58.105Z</published>
-    <updated>2018-05-08T00:41:29.337Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1>]]></content>
+    <content type="html"><![CDATA[<h2 id="组合和继承"><a href="#组合和继承" class="headerlink" title="组合和继承"></a>组合和继承</h2>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;状态提升&quot;&gt;&lt;a href=&quot;#状态提升&quot; class=&quot;headerlink&quot; title=&quot;状态提升&quot;&gt;&lt;/a&gt;状态提升&lt;/h1&gt;
+        &lt;h2 id=&quot;组合和继承&quot;&gt;&lt;a href=&quot;#组合和继承&quot; class=&quot;headerlink&quot; title=&quot;组合和继承&quot;&gt;&lt;/a&gt;组合和继承&lt;/h2&gt;
       
     
     </summary>
@@ -127,6 +102,29 @@
 &lt;p&gt;状态管理&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;redux&lt;/code&gt;是
+      
+    
+    </summary>
+    
+      <category term="react" scheme="http://yoursite.com/categories/react/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>状态提升</title>
+    <link href="http://yoursite.com/2018/05/08/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/"/>
+    <id>http://yoursite.com/2018/05/08/react/21-状态提升/</id>
+    <published>2018-05-08T00:22:58.105Z</published>
+    <updated>2018-05-08T00:41:29.337Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;状态提升&quot;&gt;&lt;a href=&quot;#状态提升&quot; class=&quot;headerlink&quot; title=&quot;状态提升&quot;&gt;&lt;/a&gt;状态提升&lt;/h1&gt;
       
     
     </summary>
