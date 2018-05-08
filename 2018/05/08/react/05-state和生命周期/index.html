@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Hexo</title>
+    
+    
+        <meta name="keywords" content="Hexo" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="state和生命周期state state 允许 React 组件在不违反props规则的情况下, 根据用户操作, 网络响应, 或者其他随便什么东西, 来动态地改变其输出。类似于vue中的data  state的定义 在类组件的constructor中定义state  12345678constructor(props) &amp;#123;    super(props);    this.state">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/05/08/react/05-state和生命周期/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="state和生命周期state state 允许 React 组件在不违反props规则的情况下, 根据用户操作, 网络响应, 或者其他随便什么东西, 来动态地改变其输出。类似于vue中的data  state的定义 在类组件的constructor中定义state  12345678constructor(props) &amp;#123;    super(props);    this.state">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/05/08/react/05-state和生命周期/img/hook1.png">
+<meta property="og:updated_time" content="2018-05-06T06:27:35.476Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="state和生命周期state state 允许 React 组件在不违反props规则的情况下, 根据用户操作, 网络响应, 或者其他随便什么东西, 来动态地改变其输出。类似于vue中的data  state的定义 在类组件的constructor中定义state  12345678constructor(props) &amp;#123;    super(props);    this.state">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/08/react/05-state和生命周期/img/hook1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/"></a></li>  <li class="file"><a href="/2018/05/08/react/01-react入门/"></a></li>  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/"></a></li>  <li class="file"><a href="/2018/05/08/react/07-组件补充/"></a></li>  <li class="file"><a href="/2018/05/08/react/02-jsx语法/"></a></li>  <li class="file"><a href="/2018/05/08/react/06-组件传值/"></a></li>  <li class="file"><a href="/2018/05/08/react/08-fetchApi-数据请求/"></a></li>  <li class="file"><a href="/2018/05/08/react/10-forms/"></a></li>  <li class="file"><a href="/2018/05/08/react/12-router/"></a></li>  <li class="file"><a href="/2018/05/08/react/16-redux/"></a></li>  <li class="file"><a href="/2018/05/08/react/21-状态提升/"></a></li>  <li class="file active"><a href="/2018/05/08/react/05-state和生命周期/"></a></li>  <li class="file"><a href="/2018/05/08/react/555-1-react基本开发环境搭建/"></a></li>  <li class="file"><a href="/2018/05/08/react/22-组合和继承/"></a></li>  <li class="file"><a href="/2018/05/08/react/23-react编程思想/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">Hello World</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-react/05-state和生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="state和生命周期"><a href="#state和生命周期" class="headerlink" title="state和生命周期"></a>state和生命周期</h1><h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><blockquote>
+<p>state 允许 React 组件在不违反props规则的情况下, 根据用户操作, 网络响应, 或者其他随便什么东西, 来动态地改变其输出。<br>类似于vue中的data</p>
+</blockquote>
+<h3 id="state的定义"><a href="#state的定义" class="headerlink" title="state的定义"></a>state的定义</h3><blockquote>
+<p>在类组件的constructor中定义state</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      posts: [],</span><br><span class="line">      comments: []</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="状态的修改"><a href="#状态的修改" class="headerlink" title="状态的修改"></a>状态的修改</h3><h4 id="不能直接修改state"><a href="#不能直接修改state" class="headerlink" title="不能直接修改state"></a>不能直接修改state</h4><blockquote>
+<p>需要调用<strong>this.setState()</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 错误  这样将不会重新渲染一个组件：</span><br><span class="line">this.state.comment = &apos;Hello&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 正确    用 setState() 代替：</span><br><span class="line">this.setState(&#123;comment: &apos;Hello&apos;&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">唯一可以分配 this.state 的地方是构造函数。</span><br></pre></td></tr></table></figure>
+<h4 id="state-状态-更新可能是异步的"><a href="#state-状态-更新可能是异步的" class="headerlink" title="state(状态) 更新可能是异步的"></a>state(状态) 更新可能是异步的</h4><p><strong>使用回调函数的形式实现异步操作</strong></p>
+<blockquote>
+<p>需要将对象参数转变为回调函数的形式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 错误</span><br><span class="line">this.setState(&#123;</span><br><span class="line">  counter: this.state.counter + this.props.increment,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 正确</span><br><span class="line">this.setState((prevState, props) =&gt; (&#123;</span><br><span class="line">  counter: prevState.counter + props.increment</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">使用另一种 setState() 的形式，它接受一个函数而不是一个对象。</span><br><span class="line"></span><br><span class="line">这个函数将接收前一个状态作为第一个参数，应用更新时的 props 作为第二个参数：</span><br></pre></td></tr></table></figure>
+<h4 id="state-状态-更新会被合并"><a href="#state-状态-更新会被合并" class="headerlink" title="state(状态)更新会被合并"></a>state(状态)更新会被合并</h4><p><strong>你的状态可能包含几个独立的变量：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">constructor(props) &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this.state = &#123;</span><br><span class="line">    posts: [],</span><br><span class="line">    comments: []</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>调用this.setState()修改单个的状态不会影响其他的状态,只会合并当前修改的这一个状态</strong></p>
+<h2 id="react-hook函数"><a href="#react-hook函数" class="headerlink" title="react-hook函数"></a>react-hook函数</h2><h3 id="hook函数的基本概念"><a href="#hook函数的基本概念" class="headerlink" title="hook函数的基本概念"></a>hook函数的基本概念</h3><p>hook函数参考链接 <a href="https://baike.baidu.com/item/%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0?fr=aladdin</a></p>
+<blockquote>
+<p>钩子函数是window消息处理机制的一部分,通过设置”钩子”,应用程序可以在系统级对所有消息,事件进行过滤,访问在正常情况下无法访问的消息</p>
+<blockquote>
+<p>钩子函数的本质是一段用以处理系统消息的程序,通过系统调用,把它挂入系统</p>
+</blockquote>
+</blockquote>
+<h3 id="react组件的三个状态"><a href="#react组件的三个状态" class="headerlink" title="react组件的三个状态"></a>react组件的三个状态</h3><p>1.mount<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">react Components被render解析生成对应的dom节点被插入浏览器的dom结构的一个过程</span><br><span class="line"></span><br><span class="line">在浏览器上看到组件元素从无到有的过程</span><br></pre></td></tr></table></figure></p>
+<p>2.update</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一个mounte的react Component被重新render的过程,但是在这个过程中,dom结构并不一定会发生改变</span><br><span class="line"></span><br><span class="line">在react中,状态的改变会触发update的hook函数</span><br></pre></td></tr></table></figure>
+<p>3.unmount</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个mount的react Component对应的dom节点被从dm中移除的一个过程</span><br></pre></td></tr></table></figure>
+<p><strong>react针对以上三种状态都封装了hook函数</strong></p>
+<p><img src="img/hook1.png" alt=""></p>
+<h3 id="生命周期钩子详解"><a href="#生命周期钩子详解" class="headerlink" title="生命周期钩子详解"></a>生命周期钩子详解</h3><h4 id="mounting"><a href="#mounting" class="headerlink" title="mounting"></a>mounting</h4><blockquote>
+<p>如下这些方法在组件实例被创建和被插入到dom中时被调用。</p>
+</blockquote>
+<ul>
+<li><p>1.constructor()</p>
+<ul>
+<li><p>constructor初始化state的好地方。如果我们不需要初始化state，也不需要bind任何方法，那么在我们的组件中不需要实现constructor函constructor在组件被mounted之前调用，我们的组件继承自React.Component,constructor函数中我们在其他操作前应该先调用super(props)，否则this.props将会是undefined。</p>
+</li>
+<li><p>constructor初始化state的好地方。如果我们不需要初始化state，也不需要bind任何方法，那么在我们的组件中不需要实现constructor函数。</p>
+</li>
+<li><p>注意下面这种情况，很容易产生bug，我们通常的做法是提升state到父组件，而不是使劲的同步state和props。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">  <span class="keyword">super</span>(props);</span><br><span class="line">  <span class="keyword">this</span>.state = &#123;</span><br><span class="line">    color: props.initialColor</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>componentWillMount()
+  </p>
+<ul>
+<li>此方法在mounting之前被立即调用，它在render()之前调用，因此在此方法中setState不会触发重新渲染。此方法是服务器渲染中调用的唯一的生命周期钩子，通常我们建议使用constructor()。</li>
+</ul>
+</li>
+<li><p>render()</p>
+<ul>
+<li><p>render()方法是react组件必须的，它检查this.props和this.state并且返回一个React元素，我们也可以返回null或false，代表我们不想有任何的渲染。</p>
+</li>
+<li><p>render()方法应该是一个纯方法，即它不会修改组件的state，在每一次调用时返回同样的结果。它不直接和浏览器交互，如果我们想要交互，应该在componentDidMount()或者其他的生命周期函数里面。</p>
+</li>
+</ul>
+</li>
+<li><p>componentDidMount()</p>
+<ul>
+<li>此方法在组件被mounted之后立即被调用，初始化dom节点应该在此方法中，如果需要从远端健在数据，这里是实例化网络请求的好地方，此方法中setState会触发组件重新渲染。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h4><blockquote>
+<p>props和state的改变产生更新。在重新渲染组建时，如下的方法被调用</p>
+</blockquote>
+<ul>
+<li><p>componentWillReceiveProps()</p>
+<ul>
+<li><p>一个已经mounted的组件接收一个新的props之前componentWillReceiveProps()被调用，如果我们需要更新state来响应prop的更改，我们可以在此方法中比较this.props和nextProps并使用this.setState来更改state。</p>
+</li>
+<li><p>注意，即使props没有改变，React也可以调用这个方法，因此如果你只想处理改变，请确保比较当前值和下一个值。当父组件导致你的组件重新渲染时，可能会发生这种情况。</p>
+</li>
+<li><p>React在组件mounting期间不会调用此方法，只有在一些组件的props可能被更新的时候才会调用。调用this.setState通常不会触发componentWillReceiveProps。</p>
+</li>
+</ul>
+</li>
+<li><p>shouldComponentUpdate()</p>
+<ul>
+<li><p>使用此方法让React知道组件的输出是否不受当前state或props更改的影响。默认行为是在每次state更改时重新渲染组件，在大多数情况下，我们应该默认改行为。</p>
+</li>
+<li><p>当接收到新的props或state时，shouldComponentUpdate()在渲染之前被调用。默认返回true，对于初始渲染或使用forceUpdate()时，不调用此方法。返回false不会阻止子组件的state更改时，该子组件重新渲染。</p>
+</li>
+<li><p>如果shouldComponentUpdate()返回false，那么componentWillUpdate()，render()和componentDidUpdate()将不会被调用。在将来，React可能将shouldComponentUpdate()作为提示而不是strict指令，返回仍然可能导致组件重新渲染。</p>
+</li>
+</ul>
+</li>
+<li><p>componentWillUpdate()</p>
+<ul>
+<li><p>当接收新的props或state时，componentWillUpdate()在组件渲染之前被立即调用。使用此函数作为在更新发生之前执行准备的机会。初始渲染不会调用此方法。</p>
+</li>
+<li><p>注意：这里不能调用this.setState()(如果调用会怎么样？好奇心很重呀，试了一下，会产生死循环，一直更新。</p>
+</li>
+<li><p>如果我们需要更新state以响应props的更改，我们应该使用componentWillReceiveProps()</p>
+</li>
+</ul>
+</li>
+<li><p>render()</p>
+<ul>
+<li><p>render()方法是react组件必须的，它检查this.props和this.state并且返回一个React元素，我们也可以返回null或false，代表我们不想有任何的渲染。</p>
+</li>
+<li><p>render()方法应该是一个纯方法，即它不会修改组件的state，在每一次调用时返回同样的结果。它不直接和浏览器交互，如果我们想要交互，应该在componentDidMount()或者其他的生命周期函数里面。</p>
+</li>
+</ul>
+</li>
+<li><p>componentDidUpdate()</p>
+<ul>
+<li><p>此函数在更新后立即被调用。初始渲染不调用此方法。</p>
+</li>
+<li><p>当组件已经更新时，使用此操作作为DOM操作的机会。这也是一个好的地方做网络请求，只要你比较当前的props和以前的props(例如：如果props没有改变，可能不需要网络请求)。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Unmounting"><a href="#Unmounting" class="headerlink" title="Unmounting"></a>Unmounting</h4><blockquote>
+<p>当从dom中移除组件时，这个方法会被调用</p>
+</blockquote>
+<ul>
+<li><p>componentWillUnmount()</p>
+<ul>
+<li>此函数在组件被卸载和销毁之前被立即调用。在此方法中执行一些必要的清理。例如清除计时器，取消网络请求或者清理在componentDidMount中创建的任何DOM元素。</li>
+</ul>
+</li>
+</ul>
+<h3 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=<span class="string">"UTF-8"</span> /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">        &lt;!--react的核心库--&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script crossorigin src="https:/</span><span class="regexp">/unpkg.com/</span>react@<span class="number">16</span>/umd/react.development.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        &lt;!--react的与dom相关的一些功能--&gt;</span></span><br><span class="line"><span class="string">        &lt;script crossorigin src="</span>https:<span class="comment">//unpkg.com/react-dom@16/umd/react-dom.development.js"&gt;&lt;/script&gt;</span></span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=<span class="string">"https://unpkg.com/babel-standalone@6.15.0/babel.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;body&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div id="root"&gt;&lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/babel"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建一个类组件</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">LifeCycle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1. mount阶段</span></span><br><span class="line">        <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">            <span class="keyword">super</span>(props);</span><br><span class="line">            <span class="keyword">this</span>.state = &#123;<span class="attr">name</span>: <span class="string">'wlt'</span>&#125;;</span><br><span class="line">            <span class="keyword">this</span>.changeState = <span class="keyword">this</span>.changeState.bind(<span class="keyword">this</span>);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'constructor'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        componentWillMount() &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillMount'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        render() &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'render'</span>);</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                &lt;div className=<span class="string">"life-cycle-bg"</span>&gt;</span><br><span class="line">                    &lt;p&gt;Hello &#123;<span class="keyword">this</span>.props.value&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;p&gt;Hello &#123;this.state.name&#125;&lt;/</span>p&gt;</span><br><span class="line">                    &lt;button onClick=&#123;<span class="keyword">this</span>.changeState&#125;&gt;改变lifeCycle的state&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        componentDidMount() &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentDidMount'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2. update阶段</span></span><br><span class="line">        componentWillReceiveProps(nextProps) &#123; <span class="comment">// 只作用于属性的变化,不作用于状态的变化</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillReceiveProps'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'shouldComponentUpdate'</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        componentWillUpdate(nextProps, nextState) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillUpdate'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ---- render会重新执行</span></span><br><span class="line">    </span><br><span class="line">        componentDidUpdate(prevProps, prevState) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentDidUpdate'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 3. Unmount阶段</span></span><br><span class="line">        componentWillUnmount(prevProps, prevState) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillUnmount'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 修改状态</span></span><br><span class="line">        changeState() &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;<span class="attr">name</span>: <span class="string">'sxm'</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ParentLifeCycle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">        <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">            <span class="keyword">super</span>(props);</span><br><span class="line">            <span class="keyword">this</span>.state = &#123;</span><br><span class="line">                value: <span class="string">'World'</span>,</span><br><span class="line">                destroyed: <span class="literal">false</span>,</span><br><span class="line">                rerender: <span class="literal">false</span></span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="keyword">this</span>.handleChange = <span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">this</span>.destroyComponent = <span class="keyword">this</span>.destroyComponent.bind(<span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">this</span>.handleRerender = <span class="keyword">this</span>.handleRerender.bind(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        handleChange() &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(<span class="function">(<span class="params">prevState, props</span>) =&gt;</span> (&#123;</span><br><span class="line">                value: prevState.value + <span class="string">' wlt'</span></span><br><span class="line">            &#125;));</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        handleRerender() &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;<span class="attr">rerender</span>: <span class="literal">true</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        destroyComponent() &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;<span class="attr">destroyed</span>: <span class="literal">true</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        render() &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.state.destroyed) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                &lt;div className=<span class="string">"parent-life-cycle-bg"</span>&gt;</span><br><span class="line">                    &lt;p&gt;</span><br><span class="line">                        &lt;button onClick=&#123;<span class="keyword">this</span>.handleChange&#125;&gt;改变LifeCyle的props&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                        &lt;button onClick=&#123;this.handleRerender&#125;&gt;父组件重新渲染，子组件re-render&lt;/</span>button&gt;</span><br><span class="line">                        &lt;button onClick=&#123;<span class="keyword">this</span>.destroyComponent&#125;&gt;删除组件&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;/</span>p&gt;</span><br><span class="line">                    &lt;LifeCycle value=&#123;<span class="keyword">this</span>.state.value&#125;/&gt;</span><br><span class="line">                &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            );</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    ReactDOM.render(</span></span><br><span class="line"><span class="regexp">        &lt;ParentLifeCycle /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">    );</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="state-和-生命周期"><a href="#state-和-生命周期" class="headerlink" title="state 和 生命周期"></a>state 和 生命周期</h2><h3 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h3><blockquote>
+<p>实现一个基本的定时器功能</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // 创建一个组件 -- 使用函数式组件</span><br><span class="line">    function Clock()&#123;</span><br><span class="line">        // 创建元素</span><br><span class="line">        const element = (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;hello world!&lt;/h1&gt;</span><br><span class="line">                &lt;h2&gt;It is &#123;new Date().toLocaleTimeString()&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        // 使用render函数渲染已经创建的元素</span><br><span class="line">        ReactDOM.render(</span><br><span class="line">            element, </span><br><span class="line">            document.getElementById(&apos;root&apos;) </span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    setInterval(Clock,1000)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>存在的问题</strong></p>
+<blockquote>
+<p>完成定时器的功能,使用组件化的形式进行封装的时候,在进行组件调用的时候应该能够直接通过  <clock> 就能完成一个定时器,而不用再配合外部的js操作</clock></p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>这样做的话能够实现相关的功能,但是不利于复用</p>
+</blockquote>
+</blockquote>
+<h3 id="改写"><a href="#改写" class="headerlink" title="改写"></a>改写</h3><blockquote>
+<p>使用组件的形式封装一个计时器</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">    </span><br><span class="line">    在组件挂载和卸载的时候,会执行对应的生命周期钩子函数</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    // 使用类的形式对组件进行改写之后,我们可以向类中添加一些内容</span><br><span class="line">    class Clock extends React.Component&#123; </span><br><span class="line">        </span><br><span class="line">        constructor(props)&#123;</span><br><span class="line">            // 类组件应始终使用 props 调用基础构造函数。</span><br><span class="line">            super(props)</span><br><span class="line">            // 使用状态进行改写</span><br><span class="line">            this.state = &#123;</span><br><span class="line">                date:new Date()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        // 组件挂载的生命周期钩子函数</span><br><span class="line">        componentDidMount()&#123;</span><br><span class="line">            console.log(&quot;组件挂载了&quot;)</span><br><span class="line">            </span><br><span class="line">            this.timer = setInterval(()=&gt;&#123;</span><br><span class="line">                // 使用this.setState() 更新本地的状态</span><br><span class="line">                this.setState(&#123;</span><br><span class="line">                    date:new Date()</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,1000)</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 组件卸载时会执行的生命周期钩子函数</span><br><span class="line">        componentWillUnmount()&#123;</span><br><span class="line">            console.log(&quot;组件卸载了&quot;)</span><br><span class="line">            clearInterval(this.timer)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        render()&#123; </span><br><span class="line">            return (</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                    &lt;h1&gt;hello world!&lt;/h1&gt;</span><br><span class="line">                    &lt;h2&gt;It is &#123;this.state.date.toLocaleTimeString()&#125;&lt;/h2&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            ) </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        // 使用render函数渲染已经创建的组件 -----  三个组件互补影响</span><br><span class="line">        ReactDOM.render(</span><br><span class="line">	        &lt;div&gt;</span><br><span class="line">		        &lt;Clock&gt;&lt;/Clock&gt;</span><br><span class="line">		        &lt;Clock&gt;&lt;/Clock&gt;</span><br><span class="line">		        &lt;Clock&gt;&lt;/Clock&gt;</span><br><span class="line">	        &lt;/div&gt;,</span><br><span class="line">            document.getElementById(&apos;root&apos;) </span><br><span class="line">        );</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/08/react/06-组件传值/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/08/react/04-组件基本使用/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            John Doe &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

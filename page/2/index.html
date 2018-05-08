@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -236,7 +236,7 @@
 </aside>
             
             <section id="main">
-        <article id="post-react/555-1-react基本开发环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-react/05-state和生命周期" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -264,11 +264,11 @@
                 
                 
                     
-                    <p><h1 id="基本开发环境"><a href="#基本开发环境" class="headerlink" title="基本开发环境"></a>基本开发环境</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><blockquote>
-<p>在页面中使用引入</p>
+                    <p><h1 id="state和生命周期"><a href="#state和生命周期" class="headerlink" title="state和生命周期"></a>state和生命周期</h1><h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><blockquote>
+<p>state 允许 React 组件在不违反props规则的情况下, 根据用户操作, 网络响应, 或者其他随便什么东西, 来动态地改变其输出。<br>类似于vue中的data</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--react的核心库--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><blockquote>
+<h3 id="state的定义"><a href="#state的定义" class="headerlink" title="state的定义"></a>state的定义</h3><blockquote>
+<p>在类组件的constructor中定义state</p>
 <p>
                 
             
@@ -276,7 +276,7 @@
         
             </div>   
             <div class="article-more-link">
-                <a href="/2018/05/08/react/555-1-react基本开发环境搭建/#more">Read More</a>
+                <a href="/2018/05/08/react/05-state和生命周期/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
@@ -290,100 +290,7 @@
 
 
     
-        <article id="post-react/23-react编程思想" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-            
-        
-        
-            <h1 id="react编程思想"><a href="#react编程思想" class="headerlink" title="react编程思想"></a>react编程思想</h1>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/22-组合和继承" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-            
-        
-        
-            <h2 id="组合和继承"><a href="#组合和继承" class="headerlink" title="组合和继承"></a>组合和继承</h2>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/21-状态提升" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-            
-        
-        
-            <h2 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h2>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/16-redux" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-react/04-组件基本使用" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -409,275 +316,12 @@
                     
                     
                 
-            
-        
-        
-            <h1 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h1><blockquote>
-<p>状态管理</p>
+                
+                    
+                    <p><h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><h2 id="什么是组件"><a href="#什么是组件" class="headerlink" title="什么是组件"></a>什么是组件</h2><blockquote>
+<p>组成的部件</p>
 </blockquote>
-<p><code>redux</code>是将整个应用程序的状态存储到一个地方, 称为<code>store</code></p>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/12-router" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h1 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h1><h2 id="路由的基本实现"><a href="#路由的基本实现" class="headerlink" title="路由的基本实现"></a>路由的基本实现</h2><p><strong>注意事项</strong></p>
-<ul>
-<li>Router或者说是 BrowserRouter 的内部 只能有一个根元素</li>
-</ul>
-<p>1.引入相关的包</p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/05/08/react/12-router/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/10-forms" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h1 id="forms"><a href="#forms" class="headerlink" title="forms"></a>forms</h1><h2 id="表单概述"><a href="#表单概述" class="headerlink" title="表单概述"></a>表单概述</h2><blockquote>
-<p>HTML 表单元素与 React 中的其他 DOM 元素有所不同，因为表单元素自然地保留了一些内部状态。例如，这个纯 HTML 表单接受一个单独的 name：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">  &lt;label&gt;</span><br><span class="line">    Name:</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;</span><br><span class="line">  &lt;/label&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/05/08/react/10-forms/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/08-fetchApi-数据请求" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h1 id="react数据请求"><a href="#react数据请求" class="headerlink" title="react数据请求"></a>react数据请求</h1><p>参考文档  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</a></p>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="cdn链接"><a href="#cdn链接" class="headerlink" title="cdn链接"></a>cdn链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><h4 id="静态数据"><a href="#静态数据" class="headerlink" title="静态数据"></a>静态数据</h4><blockquote>
-<p>最初的时候, 渲染页面 , 数据都是写在本页面</p>
-</blockquote>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/05/08/react/08-fetchApi-数据请求/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/07-组件补充" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h1 id="组件补充"><a href="#组件补充" class="headerlink" title="组件补充"></a>组件补充</h1><h2 id="组件的嵌套"><a href="#组件的嵌套" class="headerlink" title="组件的嵌套"></a>组件的嵌套</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">    </span><br><span class="line">    组件：组成的部件,可以接受任何props输入,并返回元素</span><br><span class="line">    </span><br><span class="line">--&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line"></span><br><span class="line">    // 1.1 创建一个基本的组件</span><br><span class="line">    function Welcome(props)&#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;&#123;props.name&#125;&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    // 1.2 创建一个app组件,并使用Welcome组件</span><br><span class="line">    function App(props)&#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;Welcome name=&quot;1&quot;&gt;&lt;/Welcome&gt;</span><br><span class="line">                &lt;Welcome name=&quot;2&quot;&gt;&lt;/Welcome&gt;</span><br><span class="line">                &lt;Welcome name=&quot;3&quot;&gt;&lt;/Welcome&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var element = &lt;App&gt;&lt;/App&gt;</span><br><span class="line">    // 2. 组件的使用</span><br><span class="line">    ReactDOM.render(</span><br><span class="line">        element, </span><br><span class="line">        document.getElementById(&apos;root&apos;) </span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="公共组件的提取"><a href="#公共组件的提取" class="headerlink" title="公共组件的提取"></a>公共组件的提取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="props总结"><a href="#props总结" class="headerlink" title="props总结"></a>props总结</h2><p><strong>props是只读的</strong></p>
-<blockquote>
-<p>所有 React 组件都必须是纯函数，并禁止修改其自身 props 。</p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2018/05/08/react/07-组件补充/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-react/06-组件传值" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h1 id="组件传值"><a href="#组件传值" class="headerlink" title="组件传值"></a>组件传值</h1><blockquote>
-<p>每个组件 的作用域都是独立的, 有时候需要在组件之间完成数据的传递,需要通过组件传值的方式来实现</p>
-</blockquote>
-<p><strong>组件传值可以分为以下三类</strong></p>
+<p><strong>组件使你可以将 UI 划分为一个一个独立，可复用的小部件，并可以对每个部件进行单独的设计。</strong></p>
 <ul>
 <p>
                 
@@ -686,7 +330,263 @@
         
             </div>   
             <div class="article-more-link">
-                <a href="/2018/05/08/react/06-组件传值/#more">Read More</a>
+                <a href="/2018/05/08/react/04-组件基本使用/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-react/02-jsx语法" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h1 id="jsx语法"><a href="#jsx语法" class="headerlink" title="jsx语法"></a>jsx语法</h1><h2 id="什么是jsx语法"><a href="#什么是jsx语法" class="headerlink" title="什么是jsx语法"></a>什么是jsx语法</h2><h3 id="语法特点"><a href="#语法特点" class="headerlink" title="语法特点"></a>语法特点</h3><blockquote>
+<p>react使用jsx代替常规的javascript</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    1. 一个很像是XML的js语法扩展</span><br><span class="line">    </span><br><span class="line">    2. 编写模板更加快速-简单</span><br><span class="line">    </span><br><span class="line">    3. 它是类型安全的,在编译的过程中就能发现错误</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 使用规则</span><br><span class="line"></span><br><span class="line">&gt; react jsx的使用</span><br></pre></td></tr></table></figure>
+<pre><code>1. 可以创建一个独立的js文件来使用,通过script标签来引入
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2018/05/08/react/02-jsx语法/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-react/01-react入门" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h1 id="react入门"><a href="#react入门" class="headerlink" title="react入门"></a>react入门</h1><p>– 案例驱动—示例</p>
+<h2 id="react是什么"><a href="#react是什么" class="headerlink" title="react是什么"></a>react是什么</h2><blockquote>
+<p>React 是一个用于构建用户界面的 JAVASCRIPT 库。</p>
+</blockquote>
+<blockquote>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2018/05/08/react/01-react入门/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-react/00-学习资料参考" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h1 id="react优质学习资源"><a href="#react优质学习资源" class="headerlink" title="react优质学习资源"></a>react优质学习资源</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><p>fetch  CDN    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</a><br>fetch  CDN    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API</a></p>
+<h3 id="react基本知识点"><a href="#react基本知识点" class="headerlink" title="react基本知识点"></a>react基本知识点</h3><p>react中文文档  <a href="http://www.css88.com/react/docs/portals.html" target="_blank" rel="noopener">http://www.css88.com/react/docs/portals.html</a></p>
+<p>react英文文档  <a href="https://reactjs.org/docs/react-api.html" target="_blank" rel="noopener">https://reactjs.org/docs/react-api.html</a></p>
+<p>react中文网  <a href="http://www.reactchina.cn/" target="_blank" rel="noopener">http://www.reactchina.cn/</a></p>
+<p>react生命周期  <a href="https://facebook.github.io/react/docs/react-component.html" target="_blank" rel="noopener">https://facebook.github.io/react/docs/react-component.html</a></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2018/05/08/react/00-学习资料参考/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/08/hello-world/">
+            <time datetime="2018-05-07T22:30:03.040Z" itemprop="datePublished">2018-05-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/hello-world.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/hello-world.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/hello-world.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/08/hello-world/">Hello World</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2018/05/08/hello-world/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
@@ -701,7 +601,7 @@
 
     
         <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
         </nav>
     
 </section>

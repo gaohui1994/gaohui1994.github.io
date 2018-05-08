@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Hexo</title>
+    
+    
+        <meta name="keywords" content="Hexo" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="react数据请求参考文档  https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 基本使用cdn链接1&amp;lt;script src=&amp;quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; get请求静态数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/05/08/react/08-fetchApi-数据请求/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="react数据请求参考文档  https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 基本使用cdn链接1&amp;lt;script src=&amp;quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; get请求静态数据">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-06T13:30:53.227Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="react数据请求参考文档  https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 基本使用cdn链接1&amp;lt;script src=&amp;quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; get请求静态数据">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Hexo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/"></a></li>  <li class="file"><a href="/2018/05/08/react/01-react入门/"></a></li>  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/"></a></li>  <li class="file"><a href="/2018/05/08/react/07-组件补充/"></a></li>  <li class="file"><a href="/2018/05/08/react/02-jsx语法/"></a></li>  <li class="file"><a href="/2018/05/08/react/06-组件传值/"></a></li>  <li class="file active"><a href="/2018/05/08/react/08-fetchApi-数据请求/"></a></li>  <li class="file"><a href="/2018/05/08/react/10-forms/"></a></li>  <li class="file"><a href="/2018/05/08/react/12-router/"></a></li>  <li class="file"><a href="/2018/05/08/react/16-redux/"></a></li>  <li class="file"><a href="/2018/05/08/react/21-状态提升/"></a></li>  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/"></a></li>  <li class="file"><a href="/2018/05/08/react/555-1-react基本开发环境搭建/"></a></li>  <li class="file"><a href="/2018/05/08/react/22-组合和继承/"></a></li>  <li class="file"><a href="/2018/05/08/react/23-react编程思想/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">Hello World</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-react/08-fetchApi-数据请求" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="react数据请求"><a href="#react数据请求" class="headerlink" title="react数据请求"></a>react数据请求</h1><p>参考文档  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</a></p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="cdn链接"><a href="#cdn链接" class="headerlink" title="cdn链接"></a>cdn链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><h4 id="静态数据"><a href="#静态数据" class="headerlink" title="静态数据"></a>静态数据</h4><blockquote>
+<p>最初的时候, 渲染页面 , 数据都是写在本页面</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>这样操作的问题是修改页面内容不方便, 只能通过操作本页面完成</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!--数据请求--&gt;</span><br><span class="line">        &lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	class Fetch_get extends React.Component&#123;</span><br><span class="line">		</span><br><span class="line">		constructor(props)&#123;</span><br><span class="line">			super(props)</span><br><span class="line">			this.state = &#123;</span><br><span class="line">				arr:[</span><br><span class="line">					&#123;&quot;id&quot;:&quot;123001&quot;,&quot;name&quot;:&quot;xiaoming&quot;&#125;,</span><br><span class="line">					&#123;&quot;id&quot;:&quot;123002&quot;,&quot;name&quot;:&quot;xiaobing&quot;&#125;,</span><br><span class="line">					&#123;&quot;id&quot;:&quot;123003&quot;,&quot;name&quot;:&quot;xiaona&quot;&#125;</span><br><span class="line">				]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		render()&#123;</span><br><span class="line">			return (</span><br><span class="line">		        &lt;div&gt;</span><br><span class="line">		        	&lt;ul&gt;</span><br><span class="line">		        		&#123;</span><br><span class="line">		        			this.state.arr.map((ele,index,arr)=&gt;&#123;</span><br><span class="line">		        				return &lt;li key=&#123;index&#125;&gt;&#123;ele.name&#125;&lt;/li&gt;</span><br><span class="line">		        			&#125;)</span><br><span class="line">		        		&#125;</span><br><span class="line">		        	&lt;/ul&gt;</span><br><span class="line">		        &lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">    ReactDOM.render(</span><br><span class="line">        &lt;Fetch_get&gt;&lt;/Fetch_get&gt;, </span><br><span class="line">        document.getElementById(&apos;root&apos;) </span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="json文件"><a href="#json文件" class="headerlink" title="json文件"></a>json文件</h4><blockquote>
+<p>实现页面结构和数据的分离, 修改页面内容的时候, 操作文件即可</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>以json文件为例, 修改json文件之后, 我们页面的内容也会发生变化</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>json文件定义—-数据定义</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;&quot;id&quot;:&quot;123001&quot;,&quot;name&quot;:&quot;xiaoming&quot;&#125;,</span><br><span class="line">	&#123;&quot;id&quot;:&quot;123002&quot;,&quot;name&quot;:&quot;xiaobing&quot;&#125;,</span><br><span class="line">	&#123;&quot;id&quot;:&quot;123003&quot;,&quot;name&quot;:&quot;xiaona&quot;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求json文件,完成页面的渲染</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!--数据请求--&gt;</span><br><span class="line">        &lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	class Fetch_get extends React.Component&#123;</span><br><span class="line">		</span><br><span class="line">		constructor(props)&#123;</span><br><span class="line">			super(props)</span><br><span class="line">			this.state = &#123;</span><br><span class="line">				arr:[]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		render()&#123;</span><br><span class="line">			return (</span><br><span class="line">		        &lt;div&gt;</span><br><span class="line">		        	&lt;ul&gt;</span><br><span class="line">		        		&#123;</span><br><span class="line">		        			this.state.arr.map((ele,index,arr)=&gt;&#123;</span><br><span class="line">		        				return &lt;li key=&#123;index&#125;&gt;&#123;ele.name&#125;&lt;/li&gt;</span><br><span class="line">		        			&#125;)</span><br><span class="line">		        		&#125;</span><br><span class="line">		        	&lt;/ul&gt;</span><br><span class="line">		        &lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		componentDidMount()&#123;</span><br><span class="line">			</span><br><span class="line">			var url = &quot;data.json&quot;</span><br><span class="line">			</span><br><span class="line">			var option = &#123;</span><br><span class="line">				methods:&quot;get&quot;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fetch(url,option).then((res)=&gt;&#123;</span><br><span class="line">				return res.json()</span><br><span class="line">			&#125;).then((res)=&gt;&#123;</span><br><span class="line">				// 请求到的数据</span><br><span class="line">				console.log(res)</span><br><span class="line">				</span><br><span class="line">				// 修改state</span><br><span class="line">				this.setState(&#123;</span><br><span class="line">					arr:res</span><br><span class="line">				&#125;)</span><br><span class="line">				</span><br><span class="line">				// 打印输出 </span><br><span class="line">				console.log(this.state.arr)</span><br><span class="line">				</span><br><span class="line">			&#125;)</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">    ReactDOM.render(</span><br><span class="line">        &lt;Fetch_get&gt;&lt;/Fetch_get&gt;, </span><br><span class="line">        document.getElementById(&apos;root&apos;) </span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><blockquote>
+<p>为了便于数据的操作, 我们平时看到的页面上的数据一般都是存在数据库的, 通过后台管理系统, 能够很方便的实现数据的修改</p>
+</blockquote>
+<p>– 此例 不多做演示</p>
+<h4 id="在线接口"><a href="#在线接口" class="headerlink" title="在线接口"></a>在线接口</h4><blockquote>
+<p>书写数据接口, 通过后台操作, 读取数据库数据, 并做成接口的形式, 我们需要对数据进行操作的时候,直接操作接口即可</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!--数据请求--&gt;</span><br><span class="line">        &lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	[&#123;&quot;id&quot;:&quot;123001&quot;,&quot;name&quot;:&quot;xiaoming&quot;&#125;,&#123;&quot;id&quot;:&quot;123002&quot;,&quot;name&quot;:&quot;xiaobing&quot;&#125;,&#123;&quot;id&quot;:&quot;123003&quot;,&quot;name&quot;:&quot;xiaona&quot;&#125;]</span><br><span class="line">	</span><br><span class="line">	class Fetch_get extends React.Component&#123;</span><br><span class="line">		</span><br><span class="line">		constructor(props)&#123;</span><br><span class="line">			super(props)</span><br><span class="line">			this.state = &#123;</span><br><span class="line">				arr:[]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		render()&#123;</span><br><span class="line">			return (</span><br><span class="line">		        &lt;div&gt;</span><br><span class="line">		        	&lt;ul&gt;</span><br><span class="line">		        		&#123;</span><br><span class="line">		        			this.state.arr.map((ele,index,arr)=&gt;&#123;</span><br><span class="line">		        				return &lt;li key=&#123;index&#125;&gt;&#123;ele.name&#125;&lt;/li&gt;</span><br><span class="line">		        			&#125;)</span><br><span class="line">		        		&#125;</span><br><span class="line">		        	&lt;/ul&gt;</span><br><span class="line">		        &lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		componentDidMount()&#123;</span><br><span class="line">			</span><br><span class="line">			var url = &quot;http://www.taoquan.store/robot/getUsers.php&quot;</span><br><span class="line">			</span><br><span class="line">			var option = &#123;</span><br><span class="line">				methods:&quot;get&quot;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fetch(url,option).then((res)=&gt;&#123;</span><br><span class="line">				return res.json()</span><br><span class="line">			&#125;).then((res)=&gt;&#123;</span><br><span class="line">				// 请求到的数据</span><br><span class="line">				console.log(res.users)</span><br><span class="line">				</span><br><span class="line">				// 修改state</span><br><span class="line">				this.setState(&#123;</span><br><span class="line">					arr:res.users</span><br><span class="line">				&#125;)</span><br><span class="line">				</span><br><span class="line">				// 打印输出 </span><br><span class="line">				console.log(this.state.arr)</span><br><span class="line">				</span><br><span class="line">			&#125;)</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    ReactDOM.render(</span><br><span class="line">        &lt;Fetch_get&gt;&lt;/Fetch_get&gt;, </span><br><span class="line">        document.getElementById(&apos;root&apos;) </span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><blockquote>
+<p>将数据提交到数据库</p>
+</blockquote>
+<h4 id="基本示例"><a href="#基本示例" class="headerlink" title="基本示例"></a>基本示例</h4><blockquote>
+<p>在真正操作的时候只需要将要提交的数据换成表单数据即可</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!--数据请求--&gt;</span><br><span class="line">        &lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	class Com extends React.Component&#123;</span><br><span class="line">		constructor(props)&#123;</span><br><span class="line">			super(props)</span><br><span class="line">			this.state = &#123;</span><br><span class="line">				</span><br><span class="line">				num:1</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		render()&#123;</span><br><span class="line">			return (</span><br><span class="line">				        </span><br><span class="line">		        &lt;div&gt;</span><br><span class="line">		        	&lt;ul&gt;</span><br><span class="line">		        		&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">		        	&lt;/ul&gt;</span><br><span class="line">		        &lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		componentDidMount()&#123;</span><br><span class="line">			</span><br><span class="line">			var url = &apos;http://127.0.0.1:8899/api/insertData&apos;</span><br><span class="line">			var options = &#123;</span><br><span class="line">				method: &apos;POST&apos;,</span><br><span class="line">			  	headers: &#123;</span><br><span class="line">			    	&apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;,</span><br><span class="line">			  	&#125;,</span><br><span class="line">			  	body: &apos;name=1&amp;sex=2&amp;email=3&amp;phone=4&amp;address=5&apos;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			fetch(url,options)</span><br><span class="line">			.then((res)=&gt;&#123;</span><br><span class="line">				return res.json()</span><br><span class="line">			&#125;)</span><br><span class="line">			.then((res)=&gt;&#123;</span><br><span class="line">				console.log(res)</span><br><span class="line">			&#125;)</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">    ReactDOM.render(</span><br><span class="line">        &lt;Com&gt;&lt;/Com&gt;, </span><br><span class="line">        document.getElementById(&apos;root&apos;) </span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var url = &apos;http://127.0.0.1:8899/api/insertData&apos;</span><br><span class="line">var options = &#123;</span><br><span class="line">	method: &apos;POST&apos;,</span><br><span class="line">  	headers: &#123;</span><br><span class="line">    	&apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;,</span><br><span class="line">  	&#125;,</span><br><span class="line">  	body: &apos;name=1&amp;sex=2&amp;email=3&amp;phone=4&amp;address=5&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fetch(url,options)</span><br><span class="line">.then((res)=&gt;&#123;</span><br><span class="line">	return res.json()</span><br><span class="line">&#125;)</span><br><span class="line">.then((res)=&gt;&#123;</span><br><span class="line">	console.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">				</span><br><span class="line">	var data = &#123;</span><br><span class="line">		name:&quot;1&quot;,</span><br><span class="line">		sex:&quot;2&quot;,</span><br><span class="line">		email:&quot;3&quot;,</span><br><span class="line">		phone:&quot;4&quot;,</span><br><span class="line">		address:&quot;5&quot;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fetch(&apos;http://127.0.0.1:8899/api/insertData&apos;,&#123;</span><br><span class="line">		method: &apos;POST&apos;,</span><br><span class="line">	    body: `data=$&#123;JSON.stringify(data)&#125;`,</span><br><span class="line">	    headers: &#123;</span><br><span class="line">	    	&apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;,</span><br><span class="line">	  	&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	.then((res)=&gt;&#123;</span><br><span class="line">		console.log(res.json())</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><ul>
+<li>Content-Type：上传文件的时候，一定要设置为application/x-www-form-urlencoded</li>
+</ul>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><h4 id="fetch跨域概述"><a href="#fetch跨域概述" class="headerlink" title="fetch跨域概述"></a>fetch跨域概述</h4><blockquote>
+<p>在fetch的配置中有  mode选项  , 提供了跨域的能力</p>
+</blockquote>
+<ul>
+<li>mode: ‘cors’, // no-cors, cors, *same-origin</li>
+</ul>
+<ul>
+<li><p>mode:’cors’</p>
+<ul>
+<li>这个选项提供了跨域的能力, 但是服务端必须支持 cors  ,也就是设置  res.header(“Access-Control-Allow-Origin”, “*”);</li>
+</ul>
+</li>
+<li><p>mode:’no-cors’</p>
+<ul>
+<li>可以跨域进行数据请求 , 不需要设置跨域 header</li>
+<li>在该模式下  得到的返回数据中  type为opaque。, 能够在控制台看到返回的数据, 但是没有权限使用这些数据</li>
+</ul>
+</li>
+<li><p>mode:”same-origin”</p>
+<ul>
+<li>同源, 不允许跨域</li>
+</ul>
+</li>
+</ul>
+<p><strong>并不能成功跨域进行数据的访问</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">        &lt;title&gt;Hello World&lt;/title&gt;</span><br><span class="line">        &lt;!--react的核心库--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react@16/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--react的与dom相关的一些功能--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--将浏览器不支持的jsx语法转化为js语法--&gt;</span><br><span class="line">        &lt;script crossorigin src=&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!--数据请求--&gt;</span><br><span class="line">        &lt;script src=&quot;https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	class Fetch_get extends React.Component&#123;</span><br><span class="line">		</span><br><span class="line">		constructor(props)&#123;</span><br><span class="line">			super(props)</span><br><span class="line">			this.state = &#123;</span><br><span class="line">				arr:[]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		render()&#123;</span><br><span class="line">			return (</span><br><span class="line">		        &lt;div&gt;</span><br><span class="line">		        	&lt;ul&gt;</span><br><span class="line">		        		&#123;</span><br><span class="line">		        			this.state.arr.map((ele,index,arr)=&gt;&#123;</span><br><span class="line">		        				return &lt;li key=&#123;index&#125;&gt;&#123;ele.name&#125;&lt;/li&gt;</span><br><span class="line">		        			&#125;)</span><br><span class="line">		        		&#125;</span><br><span class="line">		        	&lt;/ul&gt;</span><br><span class="line">		        &lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		componentDidMount()&#123;</span><br><span class="line">			</span><br><span class="line">			 var url = &quot;https://api.douban.com/v2/movie/top250&quot;</span><br><span class="line">			// var url = &apos;http://127.0.0.1:8899/api/selectData&apos;</span><br><span class="line">			var option = &#123;</span><br><span class="line">				methods:&quot;get&quot;,</span><br><span class="line">				mode:&apos;no-cors&apos;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fetch(url,option).then((res)=&gt;&#123;</span><br><span class="line">				console.log(res)</span><br><span class="line">			&#125;)</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">    ReactDOM.render(</span><br><span class="line">        &lt;Fetch_get&gt;&lt;/Fetch_get&gt;, </span><br><span class="line">        document.getElementById(&apos;root&apos;) </span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="使用jsonp调取数据"><a href="#使用jsonp调取数据" class="headerlink" title="使用jsonp调取数据"></a>使用jsonp调取数据</h4><blockquote>
+<p>在原生js中, 利用script标签的支持跨域的特性进行</p>
+</blockquote>
+<h5 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h5><blockquote>
+<p>利用script标签的跨域访问特性</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;JSONP实现跨域2&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!--代码的先后顺序 不能变--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function fn(response)&#123;</span><br><span class="line">            console.log(response);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://api.douban.com/v2/movie/top250?callback=fn&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="第二种方式-1"><a href="#第二种方式-1" class="headerlink" title="第二种方式"></a>第二种方式</h5><blockquote>
+<p>动态创建script标签</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;JSONP实现跨域2&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!--代码的先后顺序 不能变--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function fn(response)&#123;</span><br><span class="line">            console.log(response);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var script = document.createElement(&apos;script&apos;)</span><br><span class="line">    </span><br><span class="line">    script.src = &apos;https://api.douban.com/v2/movie/top250?callback=fn&apos;</span><br><span class="line">    </span><br><span class="line">    document.body.insertBefore(script, document.body.firstChild);   </span><br><span class="line">    </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="第三种方式"><a href="#第三种方式" class="headerlink" title="第三种方式"></a>第三种方式</h5><blockquote>
+<p>使用jquery</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script src=&quot;https://code.jquery.com/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">	    type:&apos;get&apos;,</span><br><span class="line">	    url:&quot;https://api.douban.com/v2/movie/top250?callback=?&quot;,</span><br><span class="line">	    success(res)&#123;</span><br><span class="line">	    	console.log(res)</span><br><span class="line">	    &#125;,</span><br><span class="line">	    dataType:&quot;jsonp&quot;</span><br><span class="line">	&#125;)</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="项目中使用-create-react-app"><a href="#项目中使用-create-react-app" class="headerlink" title="项目中使用 create-react-app"></a>项目中使用 create-react-app</h2><blockquote>
+<p>fetchApi的使用</p>
+</blockquote>
+<p>npm 地址  <a href="https://www.npmjs.com/package/whatwg-fetch" target="_blank" rel="noopener">https://www.npmjs.com/package/whatwg-fetch</a></p>
+<blockquote>
+<p>详细的使用说明可以参考这个文档</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 安装  npm install whatwg-fetch --save</span><br><span class="line"></span><br><span class="line">2. 配置  在使用webpack的时候,需要完成这一步的配置</span><br><span class="line">    entry: [&apos;whatwg-fetch&apos;, ...]</span><br><span class="line"></span><br><span class="line">3. 使用</span><br><span class="line">    直接导入这个包即可   import &apos;whatwg-fetch&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="请求html文件"><a href="#请求html文件" class="headerlink" title="请求html文件"></a>请求html文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">HTML</span><br><span class="line">fetch(&apos;/users.html&apos;)</span><br><span class="line">  .then(function(response) &#123;</span><br><span class="line">    return response.text()</span><br><span class="line">  &#125;).then(function(body) &#123;</span><br><span class="line">    document.body.innerHTML = body</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="get-请求获取数据"><a href="#get-请求获取数据" class="headerlink" title="get  请求获取数据"></a>get  请求获取数据</h3><blockquote>
+<p>  在componentDidMount(){}生命周期钩子中进行数据的初始化操作</p>
+</blockquote>
+<p>1.在构造函数中初始化状态(数据)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">constructor(props)&#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.state = &#123;</span><br><span class="line">        arr:[],</span><br><span class="line">        name:&quot;test&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.在 componentDidMount 中发送请求,获取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">    fetch(&apos;http://gaohuimusic.nat123.cc:11444/personalized&apos;)</span><br><span class="line">        .then((response) =&gt; &#123;</span><br><span class="line">            return response.json()</span><br><span class="line">        &#125;).then((json) =&gt; &#123;</span><br><span class="line">            console.log(&apos;parsed json&apos;, json)</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">                arr:json.result</span><br><span class="line">            &#125;)</span><br><span class="line">            console.log(this.state.arr)</span><br><span class="line">        &#125;).catch(function(ex) &#123;</span><br><span class="line">            console.log(&apos;parsing failed&apos;, ex)</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.在render()函数中完成页面渲染—-将请求到的数据渲染到页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;p&gt;这是tab1&lt;/p&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &#123;this.state.arr.map(function(ele,index,arr)&#123;</span><br><span class="line">                    return &lt;li key=&#123;index&#125;&gt;&#123;ele.name&#125;&lt;/li&gt;</span><br><span class="line">                &#125;)&#125;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="post-请求"><a href="#post-请求" class="headerlink" title="post 请求"></a>post 请求</h3>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/08/react/10-forms/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/08/react/07-组件补充/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            John Doe &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
