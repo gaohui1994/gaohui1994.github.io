@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang=Ch>
+<head>
+    <meta charset="utf-8">
+    
+    <title>11-路由 | GaoHui</title>
+    
+    
+        <meta name="keywords" content="biji" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="路由 和vue一样,在ng2Pro中也有路由操作  在vue中需要引入vue-router 在ng2Pro中的路由是将相关的操作一模块化的方式封装到一个类中,在使用的时候只需要导入对应的类即可   知识点概述  路由的基本实现 创建一个新的项目模板   1ng new router --routing 和vue一样,流程化操作即可 123456789101112131415161718192021">
+<meta name="keywords" content="biji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11-路由">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/index.html">
+<meta property="og:site_name" content="GaoHui">
+<meta property="og:description" content="路由 和vue一样,在ng2Pro中也有路由操作  在vue中需要引入vue-router 在ng2Pro中的路由是将相关的操作一模块化的方式封装到一个类中,在使用的时候只需要导入对应的类即可   知识点概述  路由的基本实现 创建一个新的项目模板   1ng new router --routing 和vue一样,流程化操作即可 123456789101112131415161718192021">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router3.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router4.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/params.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router_c.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router111.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/1001.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/1002.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/1003.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/1004.png">
+<meta property="og:updated_time" content="2018-05-10T01:29:59.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11-路由">
+<meta name="twitter:description" content="路由 和vue一样,在ng2Pro中也有路由操作  在vue中需要引入vue-router 在ng2Pro中的路由是将相关的操作一模块化的方式封装到一个类中,在使用的时候只需要导入对应的类即可   知识点概述  路由的基本实现 创建一个新的项目模板   1ng new router --routing 和vue一样,流程化操作即可 123456789101112131415161718192021">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/10/angular2/11-路由操作/img/router3.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="GaoHui" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">GaoHui</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'pos',
+            PAGES: 'Pages',
+            CATEGORIES: 'kategori',
+            TAGS: 'tag',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>kategori</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular1
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ng基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/01-ng基础/01-ng基础/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-ng表达式
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/02-ng表达式/02-ng表达式/">表达式</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-ng指令
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/03-ng指令/03-ng指令/">指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-模块
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/04-模块/043-控制器/">controller</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/041-模块/">模块</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/042-作用域/">作用域</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-filter
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/05-filter/05-过滤器/">angularjs过滤器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-service
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/06-service/06-服务/">服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-http
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/07-http/07-http/">Http</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/08-form/08-选择框和表格/">选择框和表格</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            09-sql
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/09-sql/09-sql/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-dom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/10-dom/10-dom/">DOM</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            111-event
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/111-event/11-事件/">事件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-validate
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/12-validate/12-表单和输入验证/">表单和输入验证</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            13-全局api
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/13-全局api/13-全局api/">全局api</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            14-bootstrap
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/14-bootstrap/14-bootstrap使用/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            15-include
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/15-include/15-include/">页面包含</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-animation
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/16-animation/16-angularjs动画/">angularjs动画</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            17-inject
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/17-inject/17-依赖注入/">依赖注入</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            18-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/18-router/18-angularjs路由/">ng路由</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            19-conclusion
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/19-conclusion/19-知识点总结/">全局api</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            angular2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular2/01-简介/">01-angular概述</a></li>  <li class="file"><a href="/2018/05/10/angular2/02-开发环境搭建/">02-开发环境</a></li>  <li class="file"><a href="/2018/05/10/angular2/03-项目目录结构解析/">03-项目简介</a></li>  <li class="file"><a href="/2018/05/10/angular2/06-知识点集锦/">06-知识小结</a></li>  <li class="file"><a href="/2018/05/10/angular2/04-项目启动过程/">04-项目启动</a></li>  <li class="file"><a href="/2018/05/10/angular2/05-bootstrap和jquery的使用/">05-插件使用第一种方式</a></li>  <li class="file active"><a href="/2018/05/10/angular2/11-路由操作/">11-路由</a></li>  <li class="file"><a href="/2018/05/10/angular2/07-管道--过滤器/">07-管道</a></li>  <li class="file"><a href="/2018/05/10/angular2/08-组件化开发/">08-ng2Pro中的组件化开发</a></li>  <li class="file"><a href="/2018/05/10/angular2/09-组件之间的数据传递/">09-组件之间的数据传递</a></li>  <li class="file"><a href="/2018/05/10/angular2/10-生命周期钩子/">10-生命周期钩子</a></li>  <li class="file"><a href="/2018/05/10/angular2/12-数据请求/">12-数据请求</a></li>  <li class="file"><a href="/2018/05/10/angular2/13-服务/">13-服务</a></li>  <li class="file"><a href="/2018/05/10/angular2/14-表单/">14-表单处理</a></li>  <li class="file"><a href="/2018/05/10/angular2/15-动画/">15-动画</a></li>  <li class="file"><a href="/2018/05/10/angular2/17-i18n-国际化/">17-i18n</a></li>  <li class="file"><a href="/2018/05/10/angular2/18-自动化测试/">18-自动化测试</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-1-核心概念/">19-angular核心</a></li>  <li class="file"><a href="/2018/05/10/angular2/16-指令/">16-自定义指令</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-3-优质学习资源收集/">21-angular优质学习资源</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-2-angular-ui库/">20-ui库</a></li>  <li class="file"><a href="/2018/05/10/angular2/999-核心知识点/">22-核心知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ionic2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ionic2/01-ionic概述/">01-ionic知识点</a></li>  <li class="file"><a href="/2018/05/10/ionic2/03-ionic组件的使用-上/">03-组件使用上</a></li>  <li class="file"><a href="/2018/05/10/ionic2/05-组件补充/">05-导航</a></li>  <li class="file"><a href="/2018/05/10/ionic2/04-ionic组件的使用-下/">04-组件使用下</a></li>  <li class="file"><a href="/2018/05/10/ionic2/02-ionic安装与使用/">02-ionic的安装与使用</a></li>  <li class="file"><a href="/2018/05/10/ionic2/06-主体化/">06-主题设置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-mysql基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/01-mysql基础/01-mysql基础/">mysql 的基本使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-数据库和表的相关信息
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/02-数据库和表的相关信息/02-获取数据库和表的相关信息/">获取 数据库和表的相关信息</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-常见查询操作
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/03-常见查询操作/03-常见的查询的例子/">常见的查询</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            00-学习资料参考
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/00-学习资料参考/">react优质学习资源</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-react入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/01-react入门/01-react入门/">react入门</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-jsx语法
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/02-jsx语法/02-jsx语法/">jsx语法</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-组件基本使用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/04-组件基本使用/">组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-state和生命周期
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/05-state和生命周期/">state和生命周期</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-组件传值
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/06-组件传值/06-组件传值/">组件传值</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-组件补充
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/07-组件补充/07-组件补充/">组件补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-数据请求
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/08-数据请求/08-fetchApi-数据请求/">react数据请求</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/10-form/10-forms/">forms</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/12-router/12-router/">react-router</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-redux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/16-redux/16-redux/">redux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            21-状态提升
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/21-状态提升/21-状态提升/">状态提升</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            22-组合和继承
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/22-组合和继承/22-组合和继承/">组合和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            23-react编程思想
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/23-react编程思想/23-react编程思想/">react编程思想</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            555-开发环境搭建
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/555-开发环境搭建/555-1-react基本开发环境搭建/">基本开发环境</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ts
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ts入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/01-ts入门/01-typescript入门/">typescript知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-类型注解
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/02-类型注解/02-类型注解/">强类型和类型注解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-接口
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/03-接口/03-接口/">接口</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-类
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/04-类/04-类/">类和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-模块化
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/05-模块化/05-模块化/">模块化</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-装饰器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/06-装饰器/06-装饰器/">装饰器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-简单总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/07-简单总结/07-简单总结/">ts简单总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/01-vueStart/">01-vue入门</a></li>  <li class="file"><a href="/2018/05/10/vue/02-base1/">02-vue基础</a></li>  <li class="file"><a href="/2018/05/10/vue/03-directive/">03-vue指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            weChat
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/weChat/01-入门/">01-微信小程序入门</a></li>  <li class="file"><a href="/2018/05/10/weChat/02-基本知识点/">02-基础知识点</a></li>  <li class="file"><a href="/2018/05/10/weChat/03-豆瓣电影的基本实现/">03-小程序开发实战</a></li>  <li class="file"><a href="/2018/05/10/weChat/04-组件/">04-微信小程序组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂项
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/杂项/99-1-cros-proxy-jsonp/">跨域问题解决方案</a></li>  <li class="file"><a href="/2018/05/10/杂项/88-1-flex+rem/">移动端布局</a></li>  <li class="file"><a href="/2018/05/10/杂项/99-2-websocket/">WebSocket</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">介绍</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-angular2/11-路由操作" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/angular2/">angular2</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/10/angular2/11-路由操作/">
+            <time datetime="2018-05-10T00:36:05.012Z" itemprop="datePublished">2018-05-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/angular2/11-路由操作.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/angular2/11-路由操作.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/angular2/11-路由操作.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            11-路由
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><blockquote>
+<p>和vue一样,在ng2Pro中也有路由操作</p>
+<blockquote>
+<p>在vue中需要引入vue-router</p>
+<p>在ng2Pro中的路由是将相关的操作一模块化的方式封装到一个类中,在使用的时候只需要导入对应的类即可</p>
+</blockquote>
+</blockquote>
+<p><strong>知识点概述</strong></p>
+<p><img src="img/router3.png" alt=""></p>
+<h3 id="路由的基本实现"><a href="#路由的基本实现" class="headerlink" title="路由的基本实现"></a>路由的基本实现</h3><blockquote>
+<p>创建一个新的项目模板 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng new router --routing</span><br></pre></td></tr></table></figure>
+<p><strong>和vue一样,流程化操作即可</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1. 引入js   /  导入js -----自动完成</span><br><span class="line"></span><br><span class="line">2. 组件的定义</span><br><span class="line">    创建组件----使用命令行的形式</span><br><span class="line">        ng g component tab1</span><br><span class="line">        ng g component tab2</span><br><span class="line">    导入组件</span><br><span class="line">        import &#123; Tab1Component &#125; from &apos;./tab1/tab1.component&apos;;</span><br><span class="line">        import &#123; Tab2Component &#125; from &apos;./tab2/tab2.component&apos;;</span><br><span class="line"></span><br><span class="line">3. 路由的配置</span><br><span class="line">    const routes: Routes = [</span><br><span class="line"></span><br><span class="line">        &#123;path:&apos;tab1&apos;,component:Tab1Component&#125;,</span><br><span class="line">        &#123;path:&apos;tab2&apos;,component:Tab2Component&#125;</span><br><span class="line"></span><br><span class="line">    ];</span><br><span class="line">    </span><br><span class="line">4. 路由的挂载----自动完成</span><br><span class="line"></span><br><span class="line">5. 导航的链接</span><br><span class="line"></span><br><span class="line">    //routerLink的值可以是一个字符串,便于在使用路由的时候传递参数</span><br><span class="line">    &lt;a routerLink=&quot;/demoComponent&quot;&gt;创建组件&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    //routerLink的值可以是一个数组,便于在使用路由的时候传递参数</span><br><span class="line">    &lt;a [routerLink]=&quot;[&apos;/&apos;]&quot;&gt;主页&lt;/a&gt;</span><br><span class="line">    &lt;a [routerLink]=&quot;[&apos;/product&apos;]&quot;&gt;商品详情页&lt;/a&gt;</span><br><span class="line">    &lt;a [routerLink]=&quot;[&apos;/demoComponent&apos;, &#123; name: &apos;route&apos;, id: 123&#125;]&quot;&gt;商品详情页&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">6. 组件的显示 显示组件内容的一个容器</span><br><span class="line">    &lt;router-outlet&gt;&lt;/router-outlet&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>具体实现</strong></p>
+<p><img src="img/router1.png" alt=""></p>
+<h3 id="使用js控制路由跳转"><a href="#使用js控制路由跳转" class="headerlink" title="使用js控制路由跳转"></a>使用js控制路由跳转</h3><blockquote>
+<p>和基本路由的实现一样,在这里只不过是将a简介跳转的形式换成一种使用js控制路由跳转</p>
+</blockquote>
+<p><img src="img/router2.png" alt=""></p>
+<p><strong>和之前相比有区别的地方</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 导入路由对象</span><br><span class="line"></span><br><span class="line">    import &#123;Router&#125; from &apos;@angular/router&apos;</span><br><span class="line"></span><br><span class="line">2. 注入到构造函数</span><br><span class="line">    </span><br><span class="line">    constructor(private router:Router)&#123;&#125;</span><br><span class="line"></span><br><span class="line">3. 使用navigate设置跳转的路由</span><br><span class="line"></span><br><span class="line">    this.router.navigate[&apos;/tab1&apos;]</span><br></pre></td></tr></table></figure>
+<h3 id="路由参数和参数对象的获取"><a href="#路由参数和参数对象的获取" class="headerlink" title="路由参数和参数对象的获取"></a>路由参数和参数对象的获取</h3><p><strong>实现的思路</strong></p>
+<blockquote>
+<p>和vue一样,在基本路由操作的基础上,只需要修改和路径相关的内容就可以了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 导入获取路由参数的对象 ---- ActivatedRoute</span><br><span class="line">    import &#123;ActivatedRoute&#125; from &apos;@angular/router&apos;</span><br><span class="line">    </span><br><span class="line">2. 注入到构造函数</span><br><span class="line">    constructor(public routerInfo:ActivatedRoute) &#123; &#125;</span><br><span class="line"></span><br><span class="line">3. 使用snapshot这个对象的相关属性获取对应的参数和参数对象</span><br><span class="line">    参数的获取:params[&apos;id&apos;]</span><br><span class="line">        this.routerInfo.snapshot.params[&apos;id&apos;]</span><br><span class="line">    参数对象的获取</span><br><span class="line">        this.routerInfo.snapshot.queryParams[&apos;id&apos;]</span><br></pre></td></tr></table></figure>
+<p><img src="img/router4.png" alt=""></p>
+<h3 id="路由参数获取的另一种方式"><a href="#路由参数获取的另一种方式" class="headerlink" title="路由参数获取的另一种方式"></a>路由参数获取的另一种方式</h3><blockquote>
+<p>上面使用的那一种是参数快照,还有一种是参数订阅的方式</p>
+</blockquote>
+<p><strong>参数订阅能够作什么?</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    使用这种形式能够正确的获取到通过路由传递过来的参数,但是当当前路由跳转到当前路由的话会有问题 </span><br><span class="line"></span><br><span class="line">    出现像参数快照那样的问题的原因是我们的ngOnInit生命周期钩子只会在创建当前组件的时候调用一次,</span><br><span class="line">    当前路由跳转到当前路由的时候,这个钩子不会重复执行</span><br><span class="line"></span><br><span class="line">使用参数订阅的方式能够解决当前路由跳转到当前路由的问题</span><br></pre></td></tr></table></figure>
+<p><strong>参数快照和参数订阅的实现</strong></p>
+<p><img src="img/params.png" alt=""></p>
+<h3 id="路由通配符设置"><a href="#路由通配符设置" class="headerlink" title="路由通配符设置"></a>路由通配符设置</h3><p><strong>通配符号配置路由</strong></p>
+<blockquote>
+<p>每一个都会把一个URL路径(path)映射到一个组件</p>
+<blockquote>
+<p>当所有其上面的路由路径都不符合(包括无效路径)时，就会采取通配符路由</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//当页面不存在的的时候,显示404页面   ----  通配符这个路由要放到路由的最后面</span><br><span class="line">&#123;path:&apos;**&apos;,component:Code404Component&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h3><p><strong>嵌套路由</strong></p>
+<p><img src="img/router_c.png" alt=""></p>
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p><strong>路由重定向</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;path:&apos;&apos;,component:HomeComponent&#125;,</span><br><span class="line">&#123;path:&apos;&apos;,redirectTo:&apos;/home&apos;,pathMatch:&apos;full&apos;&#125;,</span><br><span class="line">&#123;path:&apos;home&apos;,component:HomeComponent&#125;,</span><br></pre></td></tr></table></figure></p>
+<h3 id="routerLinkActive"><a href="#routerLinkActive" class="headerlink" title="routerLinkActive"></a>routerLinkActive</h3><blockquote>
+<p>一般情况下，我们会为当前激活的路径链接添加一些高亮效果，这时我们可以利用routerLinkActive属性</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;a routerLink=&quot;/demoComponent&quot;  routerLinkActive=&quot;active&quot;&gt;创建组件&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    它的值是一个以空格分割的CSS样式类列表。 还可以是一个CSS类数组：</span><br><span class="line"></span><br><span class="line">    [routerLinkActive]=&quot;[&apos;...&apos;]&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注（来源官网）：RouterLinkActive指令会基于当前的RouterState对象来为激活的RouterLink切换CSS类。 这会一直沿着路由树往下进行级联处理，所以父路由链接和子路由链接可能会同时激活。 </p>
+<p>要改变这种行为，可以把[routerLinkActiveOptions]绑定到{exact: true}表达式。 </p>
+<p>如果使用了<strong>{ exact: true }</strong>那么只有在其URL与当前URL精确匹配时才会激活指定的RouterLink</p>
+</blockquote>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在特性模块中，应该使用RouterModule.forChild()</span><br></pre></td></tr></table></figure>
+<h3 id="辅助路由"><a href="#辅助路由" class="headerlink" title="辅助路由"></a>辅助路由</h3><blockquote>
+<p>使用辅助路由可以实现多级视图的效果</p>
+</blockquote>
+<p><strong>1.路由链接和两个视图</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;a [routerLink]=&quot;[&apos;/tab1&apos;]&quot;&gt;tab1&lt;/a&gt;</span><br><span class="line">&lt;a [routerLink]=&quot;[&apos;/tab2&apos;]&quot;&gt;tab2&lt;/a&gt;</span><br><span class="line">&lt;a [routerLink]=&quot;[&apos;/tab3&apos;]&quot;&gt;tab3&lt;/a&gt;</span><br><span class="line">&lt;a [routerLink]=&quot;[&apos;/tab4&apos;]&quot;&gt;tab4&lt;/a&gt;</span><br><span class="line">&lt;a [routerLink]=&quot;[&#123;outlets:&#123;aux:&apos;chat1&apos;&#125;&#125;]&quot;&gt;chat1&lt;/a&gt;</span><br><span class="line">&lt;a [routerLink]=&quot;[&#123;outlets:&#123;aux:&apos;chat2&apos;&#125;&#125;]&quot;&gt;chat2&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //将第二级视图绑定到tab1上</span><br><span class="line">    &lt;a [routerLink]=&quot;[&#123;outlets:&#123;primary:&apos;tab1&apos;,aux:&apos;chat2&apos;&#125;&#125;]&quot;&gt;chat2&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span><br><span class="line">&lt;router-outlet name=&apos;aux&apos;&gt;&lt;/router-outlet&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2.路由信息定义</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import &#123; NgModule &#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123; Routes, RouterModule &#125; from &apos;@angular/router&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import &#123; Tab1Component &#125; from &apos;./component/tabs/tab1/tab1.component&apos;;</span><br><span class="line">import &#123; Tab2Component &#125; from &apos;./component/tabs/tab2/tab2.component&apos;;</span><br><span class="line">import &#123; Tab3Component &#125; from &apos;./component/tabs/tab3/tab3.component&apos;;</span><br><span class="line">import &#123; Tab4Component &#125; from &apos;./component/tabs/tab4/tab4.component&apos;;</span><br><span class="line">import &#123; Chat1Component &#125; from &apos;./component/chat/chat1/chat1.component&apos;;</span><br><span class="line">import &#123; Chat2Component &#125; from &apos;./component/chat/chat2/chat2.component&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const routes: Routes = [</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#123;path:&quot;tab1&quot;,component:Tab1Component&#125;,</span><br><span class="line">    &#123;path:&quot;tab2&quot;,component:Tab2Component&#125;,</span><br><span class="line">    &#123;path:&quot;tab3&quot;,component:Tab3Component&#125;,</span><br><span class="line">    &#123;path:&quot;tab4&quot;,component:Tab4Component&#125;,</span><br><span class="line">    &#123;path:&quot;chat1&quot;,component:Chat1Component,outlet:&apos;aux&apos;&#125;,</span><br><span class="line">    &#123;path:&quot;chat2&quot;,component:Chat2Component,outlet:&apos;aux&apos;&#125;</span><br><span class="line"></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  imports: [RouterModule.forRoot(routes)],</span><br><span class="line">  exports: [RouterModule]</span><br><span class="line">&#125;)</span><br><span class="line">export class AppRoutingModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="路由钩子-路由守卫"><a href="#路由钩子-路由守卫" class="headerlink" title="路由钩子/路由守卫"></a>路由钩子/路由守卫</h3><p>任何用户都能在任何时候导航到任何地方。 但有时候这样是不对的。</p>
+<p><strong>考虑一下场景</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 该用户可能无权导航到目标组件。</span><br><span class="line"></span><br><span class="line">2. 可能用户得先登录（认证）。</span><br><span class="line"></span><br><span class="line">3. 在显示目标组件前，我们可能得先获取某些数据。</span><br><span class="line"></span><br><span class="line">4. 在离开组件前，我们可能要先保存修改。</span><br><span class="line"></span><br><span class="line">5. 我们可能要询问用户：你是否要放弃本次更改，而不用保存它们？</span><br></pre></td></tr></table></figure>
+<p><strong>路由守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们可以往路由配置中添加守卫，来处理这些场景。</span><br><span class="line"></span><br><span class="line">守卫返回一个值，以控制路由器的行为：</span><br><span class="line"></span><br><span class="line">    如果它返回true，导航过程会继续</span><br><span class="line">    如果它返回false，导航过程会终止，且用户会留在原地。</span><br><span class="line"></span><br><span class="line">    守卫还可以告诉路由器导航到别处，这样也取消当前的导航。</span><br></pre></td></tr></table></figure>
+<h4 id="路由守卫的种类"><a href="#路由守卫的种类" class="headerlink" title="路由守卫的种类"></a>路由守卫的种类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">用CanActivate来处理导航到某路由的情况。</span><br><span class="line"></span><br><span class="line">用CanActivateChild来处理导航到某子路由的情况。</span><br><span class="line"></span><br><span class="line">用CanDeactivate来处理从当前路由离开的情况.</span><br><span class="line"></span><br><span class="line">用Resolve在路由激活之前获取路由数据。</span><br><span class="line"></span><br><span class="line">用CanLoad来处理异步导航到某特性模块的情况。</span><br></pre></td></tr></table></figure>
+<h4 id="CanActivate的基本使用"><a href="#CanActivate的基本使用" class="headerlink" title="CanActivate的基本使用"></a>CanActivate的基本使用</h4><p><strong>1.新建一个守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    import &#123;CanActivate&#125; from &apos;@angular/router&apos;</span><br><span class="line"></span><br><span class="line">    //使用angular router内置的接口CanActivate实现路由守卫</span><br><span class="line">    export class LoginGuard implements CanActivate &#123;</span><br><span class="line">        canActivate()&#123;</span><br><span class="line">            let loginIn:boolean = Math.random() &lt; 0.5</span><br><span class="line">            </span><br><span class="line">            if(!loginIn) &#123;</span><br><span class="line">                console.log(&quot;用户还没有登录&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            return loginIn</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p><strong>2.在路由的配置文件中app-routing.module.ts使用守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//1.导入定义好的路由守卫</span><br><span class="line">import &#123; LoginGuard &#125; from &apos;./guard/login.guard&apos;;</span><br><span class="line"></span><br><span class="line">//2.配置路由守卫</span><br><span class="line">const routes: Routes = [</span><br><span class="line"></span><br><span class="line">    &#123;path:&apos;&apos;,redirectTo:&apos;swiper&apos;,pathMatch:&apos;full&apos;&#125;,</span><br><span class="line">    &#123;path:&apos;swiper&apos;,component:SwiperComponent&#125;,    </span><br><span class="line">    &#123;path:&apos;index&apos;,component:IndexComponent&#125;,</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        path:&apos;tab2&apos;,</span><br><span class="line">        component:Tab2Component,</span><br><span class="line">        //路由进入的守卫 --- 可以执行多个路由守卫,---- 都满足的时候才能进行路由跳转</span><br><span class="line">        canActivate:[LoginGuard]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;path:&apos;**&apos;,component:Error404Component&#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//3.使用守卫----需要通过依赖注入的形式实现,也就是providers</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  imports: [RouterModule.forRoot(routes)],</span><br><span class="line">  exports: [RouterModule],</span><br><span class="line">  //路由守卫</span><br><span class="line">  providers:[LoginGuard]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="CanDeactivate的基本使用"><a href="#CanDeactivate的基本使用" class="headerlink" title="CanDeactivate的基本使用"></a>CanDeactivate的基本使用</h4><p><strong>1.新建一个守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    import &#123;CanDeactivate&#125; from &apos;@angular/router&apos;</span><br><span class="line">    import &#123; ProductComponent &#125; from &apos;../product/product.component&apos;;</span><br><span class="line">    //导入路由离开时候的路由守卫</span><br><span class="line">    </span><br><span class="line">    //泛型  指向当前组件的类型(也就是要保存的组件)</span><br><span class="line">    export class UnsavedGuard implements CanDeactivate&lt;ProductComponent&gt;&#123;</span><br><span class="line">        </span><br><span class="line">        canDeactivate (component: ProductComponent)&#123;</span><br><span class="line">            return window.confirm(&quot;你还没有保存,确定要离开吗?&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p><strong>2.在路由的配置文件中app-routing.module.ts使用守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">//1.导入定义好的路由守卫</span><br><span class="line">import &#123; LoginGuard &#125; from &apos;./guard/login.guard&apos;;</span><br><span class="line">import &#123; UnsavedGuard &#125; from &apos;./guard/unsaved.guard&apos;;</span><br><span class="line"></span><br><span class="line">//2.配置路由守卫</span><br><span class="line">const routes: Routes = [</span><br><span class="line"></span><br><span class="line">    &#123;path:&apos;&apos;,redirectTo:&apos;swiper&apos;,pathMatch:&apos;full&apos;&#125;,</span><br><span class="line">    &#123;path:&apos;swiper&apos;,component:SwiperComponent&#125;,    </span><br><span class="line">    &#123;path:&apos;index&apos;,component:IndexComponent&#125;,</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        path:&apos;tab2&apos;,</span><br><span class="line">        component:Tab2Component,</span><br><span class="line">        //路由进入的守卫 --- 可以执行多个路由守卫,---- 都满足的时候才能进行路由跳转</span><br><span class="line">        canActivate:[LoginGuard],</span><br><span class="line">        //路由离开的守卫</span><br><span class="line">        canDeactivate:[UnsavedGuard],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;path:&apos;**&apos;,component:Error404Component&#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//3.使用守卫----需要通过依赖注入的形式实现,也就是providers</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  imports: [RouterModule.forRoot(routes)],</span><br><span class="line">  exports: [RouterModule,UnsavedGuard],</span><br><span class="line">  //路由守卫</span><br><span class="line">  providers:[LoginGuard]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="Resolve-预先获取组件数据"><a href="#Resolve-预先获取组件数据" class="headerlink" title="Resolve: 预先获取组件数据"></a>Resolve: 预先获取组件数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在Hero Detail和Crisis Detail中，它们等待路由读取完对应的英雄和危机。</span><br><span class="line"></span><br><span class="line">In the Hero Detail and Crisis Detail, the app waited until the route was activated to fetch the respective hero or crisis.</span><br><span class="line"></span><br><span class="line">这种方式没有问题，但是它们还有进步的空间。 如果我们在使用真实api，很有可能数据返回有延迟，导致无法即时显示。 在这种情况下，直到数据到达前，显示一个空的组件不是最好的用户体验。</span><br><span class="line"></span><br><span class="line">我们最好预先从服务器上获取完数据，这样在路由激活的那一刻数据就准备好了。 还要在路由到此组件之前处理好错误。 但当某个id无法对应到一个危机详情时，我们没办法处理它。 这时我们最好把用户带回到“危机列表”中，那里显示了所有有效的“危机”。</span><br><span class="line"></span><br><span class="line">总之，你希望的是只有当所有必要数据都已经拿到之后，才渲染这个路由组件。</span><br><span class="line"></span><br><span class="line">我们需要Resolve守卫。</span><br></pre></td></tr></table></figure>
+<p><strong>1.创建守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Resolve,ActivatedRouteSnapshot,RouterStateSnapshot,Router&#125; from &apos;@angular/router&apos;</span><br><span class="line">import &#123; Product &#125; from &apos;../product/product.component&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import &#123;Observable&#125; from &apos;rxjs&apos;</span><br><span class="line">import &#123;Injectable&#125; from &apos;@angular/core&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//使用Injectable装饰器装饰  生成服务</span><br><span class="line">@Injectable()</span><br><span class="line">export class Test implements Resolve&lt;Product&gt;&#123;</span><br><span class="line">    </span><br><span class="line">    constructor(private router:Router)&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    resolve (route: ActivatedRouteSnapshot,state:RouterStateSnapshot)&#123;</span><br><span class="line">        let productId:number = route.params[&apos;id&apos;]</span><br><span class="line">        </span><br><span class="line">        //数据获取成功</span><br><span class="line">        if(productId ==1 )&#123;</span><br><span class="line">            return new Product(1,&quot;success&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        //数据获取不成功   导航到新路径</span><br><span class="line">        else&#123;</span><br><span class="line">            this.router.navigate([&apos;/home&apos;])</span><br><span class="line">            return undefined</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export class Test &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.使用守卫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//1.导入定义好的路由守卫</span><br><span class="line">import &#123; LoginGuard &#125; from &apos;./guard/login.guard&apos;;</span><br><span class="line">import &#123; UnsavedGuard &#125; from &apos;./guard/unsaved.guard&apos;;</span><br><span class="line">import &#123; Test &#125; from &apos;./guard/test.test&apos;;</span><br><span class="line"></span><br><span class="line">//2.配置路由守卫</span><br><span class="line">const routes: Routes = [</span><br><span class="line"></span><br><span class="line">    &#123;path:&apos;&apos;,redirectTo:&apos;swiper&apos;,pathMatch:&apos;full&apos;&#125;,</span><br><span class="line">    &#123;path:&apos;swiper&apos;,component:SwiperComponent&#125;,    </span><br><span class="line">    &#123;path:&apos;index&apos;,component:IndexComponent&#125;,</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        path:&apos;tab2&apos;,</span><br><span class="line">        component:Tab2Component,</span><br><span class="line">        //路由进入的守卫 --- 可以执行多个路由守卫,---- 都满足的时候才能进行路由跳转</span><br><span class="line">        canActivate:[LoginGuard],</span><br><span class="line">        //路由离开的守卫</span><br><span class="line">        canDeactivate:[UnsavedGuard],</span><br><span class="line">        //导航之前获取数据</span><br><span class="line">        resolve:&#123; product: Test&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;path:&apos;**&apos;,component:Error404Component&#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//3.使用守卫----需要通过依赖注入的形式实现,也就是providers</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  imports: [RouterModule.forRoot(routes)],</span><br><span class="line">  exports: [RouterModule,UnsavedGuard,Test],</span><br><span class="line">  //路由守卫</span><br><span class="line">  providers:[LoginGuard]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>3.数据的获取</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//使用路由守卫在渲染这个组件之前先从服务器读取数据</span><br><span class="line">this.routeInfo.data.subscribe((data:Product)=&gt;&#123;</span><br><span class="line">    //this.productId = product.id</span><br><span class="line">    //this.productName = product.name</span><br><span class="line">    console.log(&quot;传递过来的数据是:&quot;+data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h3><h4 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h4><blockquote>
+<p>配合bootstrap实现布局</p>
+</blockquote>
+<p><img src="img/router111.png" alt=""></p>
+<h4 id="路由使用"><a href="#路由使用" class="headerlink" title="路由使用"></a>路由使用</h4><p><strong>1.效果图</strong></p>
+<p><img src="img/1001.png" alt=""><br><img src="img/1002.png" alt=""><br><img src="img/1003.png" alt=""><br><img src="img/1004.png" alt=""></p>
+<p><strong>2.题目描述</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.配置angular路由切换</span><br><span class="line"></span><br><span class="line">2.页面轮播的实现</span><br><span class="line"></span><br><span class="line">3.数据请求的实现 + 列表渲染</span><br><span class="line"></span><br><span class="line">4.实现搜索功能</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/10/angular2/12-数据请求/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih baru</strong>
+            <div class="article-nav-title">
+                
+                    12-数据请求
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/10/angular2/10-生命周期钩子/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih Tua</strong>
+            <div class="article-nav-title">10-生命周期钩子</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            GaoHui &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo-GaoHuiWiki</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

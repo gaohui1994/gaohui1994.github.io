@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang=Ch>
+<head>
+    <meta charset="utf-8">
+    
+    <title>04-项目启动 | GaoHui</title>
+    
+    
+        <meta name="keywords" content="biji" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="项目启动 整个angular项目的启动是从.angular-cli.json文件开始的  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667&amp;#123;  &amp;quot;project&amp;quot;: &amp;">
+<meta name="keywords" content="biji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-项目启动">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/angular2/04-项目启动过程/index.html">
+<meta property="og:site_name" content="GaoHui">
+<meta property="og:description" content="项目启动 整个angular项目的启动是从.angular-cli.json文件开始的  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667&amp;#123;  &amp;quot;project&amp;quot;: &amp;">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-05-10T01:28:55.076Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="04-项目启动">
+<meta name="twitter:description" content="项目启动 整个angular项目的启动是从.angular-cli.json文件开始的  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667&amp;#123;  &amp;quot;project&amp;quot;: &amp;">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="GaoHui" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">GaoHui</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'pos',
+            PAGES: 'Pages',
+            CATEGORIES: 'kategori',
+            TAGS: 'tag',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>kategori</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular1
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ng基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/01-ng基础/01-ng基础/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-ng表达式
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/02-ng表达式/02-ng表达式/">表达式</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-ng指令
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/03-ng指令/03-ng指令/">指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-模块
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/04-模块/043-控制器/">controller</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/041-模块/">模块</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/042-作用域/">作用域</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-filter
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/05-filter/05-过滤器/">angularjs过滤器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-service
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/06-service/06-服务/">服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-http
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/07-http/07-http/">Http</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/08-form/08-选择框和表格/">选择框和表格</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            09-sql
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/09-sql/09-sql/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-dom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/10-dom/10-dom/">DOM</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            111-event
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/111-event/11-事件/">事件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-validate
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/12-validate/12-表单和输入验证/">表单和输入验证</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            13-全局api
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/13-全局api/13-全局api/">全局api</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            14-bootstrap
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/14-bootstrap/14-bootstrap使用/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            15-include
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/15-include/15-include/">页面包含</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-animation
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/16-animation/16-angularjs动画/">angularjs动画</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            17-inject
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/17-inject/17-依赖注入/">依赖注入</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            18-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/18-router/18-angularjs路由/">ng路由</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            19-conclusion
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/19-conclusion/19-知识点总结/">全局api</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            angular2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular2/01-简介/">01-angular概述</a></li>  <li class="file"><a href="/2018/05/10/angular2/02-开发环境搭建/">02-开发环境</a></li>  <li class="file"><a href="/2018/05/10/angular2/03-项目目录结构解析/">03-项目简介</a></li>  <li class="file"><a href="/2018/05/10/angular2/06-知识点集锦/">06-知识小结</a></li>  <li class="file active"><a href="/2018/05/10/angular2/04-项目启动过程/">04-项目启动</a></li>  <li class="file"><a href="/2018/05/10/angular2/05-bootstrap和jquery的使用/">05-插件使用第一种方式</a></li>  <li class="file"><a href="/2018/05/10/angular2/11-路由操作/">11-路由</a></li>  <li class="file"><a href="/2018/05/10/angular2/07-管道--过滤器/">07-管道</a></li>  <li class="file"><a href="/2018/05/10/angular2/08-组件化开发/">08-ng2Pro中的组件化开发</a></li>  <li class="file"><a href="/2018/05/10/angular2/09-组件之间的数据传递/">09-组件之间的数据传递</a></li>  <li class="file"><a href="/2018/05/10/angular2/10-生命周期钩子/">10-生命周期钩子</a></li>  <li class="file"><a href="/2018/05/10/angular2/12-数据请求/">12-数据请求</a></li>  <li class="file"><a href="/2018/05/10/angular2/13-服务/">13-服务</a></li>  <li class="file"><a href="/2018/05/10/angular2/14-表单/">14-表单处理</a></li>  <li class="file"><a href="/2018/05/10/angular2/15-动画/">15-动画</a></li>  <li class="file"><a href="/2018/05/10/angular2/17-i18n-国际化/">17-i18n</a></li>  <li class="file"><a href="/2018/05/10/angular2/18-自动化测试/">18-自动化测试</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-1-核心概念/">19-angular核心</a></li>  <li class="file"><a href="/2018/05/10/angular2/16-指令/">16-自定义指令</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-3-优质学习资源收集/">21-angular优质学习资源</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-2-angular-ui库/">20-ui库</a></li>  <li class="file"><a href="/2018/05/10/angular2/999-核心知识点/">22-核心知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ionic2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ionic2/01-ionic概述/">01-ionic知识点</a></li>  <li class="file"><a href="/2018/05/10/ionic2/03-ionic组件的使用-上/">03-组件使用上</a></li>  <li class="file"><a href="/2018/05/10/ionic2/05-组件补充/">05-导航</a></li>  <li class="file"><a href="/2018/05/10/ionic2/04-ionic组件的使用-下/">04-组件使用下</a></li>  <li class="file"><a href="/2018/05/10/ionic2/02-ionic安装与使用/">02-ionic的安装与使用</a></li>  <li class="file"><a href="/2018/05/10/ionic2/06-主体化/">06-主题设置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-mysql基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/01-mysql基础/01-mysql基础/">mysql 的基本使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-数据库和表的相关信息
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/02-数据库和表的相关信息/02-获取数据库和表的相关信息/">获取 数据库和表的相关信息</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-常见查询操作
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/03-常见查询操作/03-常见的查询的例子/">常见的查询</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            00-学习资料参考
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/00-学习资料参考/">react优质学习资源</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-react入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/01-react入门/01-react入门/">react入门</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-jsx语法
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/02-jsx语法/02-jsx语法/">jsx语法</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-组件基本使用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/04-组件基本使用/">组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-state和生命周期
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/05-state和生命周期/">state和生命周期</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-组件传值
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/06-组件传值/06-组件传值/">组件传值</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-组件补充
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/07-组件补充/07-组件补充/">组件补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-数据请求
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/08-数据请求/08-fetchApi-数据请求/">react数据请求</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/10-form/10-forms/">forms</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/12-router/12-router/">react-router</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-redux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/16-redux/16-redux/">redux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            21-状态提升
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/21-状态提升/21-状态提升/">状态提升</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            22-组合和继承
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/22-组合和继承/22-组合和继承/">组合和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            23-react编程思想
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/23-react编程思想/23-react编程思想/">react编程思想</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            555-开发环境搭建
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/555-开发环境搭建/555-1-react基本开发环境搭建/">基本开发环境</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ts
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ts入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/01-ts入门/01-typescript入门/">typescript知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-类型注解
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/02-类型注解/02-类型注解/">强类型和类型注解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-接口
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/03-接口/03-接口/">接口</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-类
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/04-类/04-类/">类和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-模块化
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/05-模块化/05-模块化/">模块化</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-装饰器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/06-装饰器/06-装饰器/">装饰器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-简单总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/07-简单总结/07-简单总结/">ts简单总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/01-vueStart/">01-vue入门</a></li>  <li class="file"><a href="/2018/05/10/vue/02-base1/">02-vue基础</a></li>  <li class="file"><a href="/2018/05/10/vue/03-directive/">03-vue指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            weChat
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/weChat/01-入门/">01-微信小程序入门</a></li>  <li class="file"><a href="/2018/05/10/weChat/02-基本知识点/">02-基础知识点</a></li>  <li class="file"><a href="/2018/05/10/weChat/03-豆瓣电影的基本实现/">03-小程序开发实战</a></li>  <li class="file"><a href="/2018/05/10/weChat/04-组件/">04-微信小程序组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂项
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/杂项/99-1-cros-proxy-jsonp/">跨域问题解决方案</a></li>  <li class="file"><a href="/2018/05/10/杂项/88-1-flex+rem/">移动端布局</a></li>  <li class="file"><a href="/2018/05/10/杂项/99-2-websocket/">WebSocket</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">介绍</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-angular2/04-项目启动过程" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/angular2/">angular2</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/10/angular2/04-项目启动过程/">
+            <time datetime="2018-05-10T00:36:04.983Z" itemprop="datePublished">2018-05-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/angular2/04-项目启动过程.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/angular2/04-项目启动过程.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/angular2/04-项目启动过程.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            04-项目启动
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h2><blockquote>
+<p>整个angular项目的启动是从.angular-cli.json文件开始的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;project&quot;: &#123;</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0-beta.28.3&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;test1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;apps&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;root&quot;: &quot;src&quot;,</span><br><span class="line">      &quot;outDir&quot;: &quot;dist&quot;,</span><br><span class="line">      &quot;assets&quot;: [</span><br><span class="line">        &quot;assets&quot;,</span><br><span class="line">        &quot;favicon.ico&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;index&quot;: &quot;index.html&quot;,           //--------------------------------------------项目的启动从index.html</span><br><span class="line">      &quot;main&quot;: &quot;main.ts&quot;,               //--------------------------------------------项目启动的脚本文件</span><br><span class="line">      &quot;polyfills&quot;: &quot;polyfills.ts&quot;,</span><br><span class="line">      &quot;test&quot;: &quot;test.ts&quot;,</span><br><span class="line">      &quot;tsconfig&quot;: &quot;tsconfig.json&quot;,</span><br><span class="line">      &quot;prefix&quot;: &quot;app&quot;,</span><br><span class="line">      &quot;styles&quot;: [</span><br><span class="line">        &quot;styles.css&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;scripts&quot;: [],</span><br><span class="line">      &quot;environments&quot;: &#123;</span><br><span class="line">        &quot;source&quot;: &quot;environments/environment.ts&quot;,</span><br><span class="line">        &quot;dev&quot;: &quot;environments/environment.ts&quot;,</span><br><span class="line">        &quot;prod&quot;: &quot;environments/environment.prod.ts&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;e2e&quot;: &#123;</span><br><span class="line">    &quot;protractor&quot;: &#123;</span><br><span class="line">      &quot;config&quot;: &quot;./protractor.conf.js&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: &quot;src/**/*.ts&quot;,</span><br><span class="line">      &quot;project&quot;: &quot;src/tsconfig.json&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: &quot;e2e/**/*.ts&quot;,</span><br><span class="line">      &quot;project&quot;: &quot;e2e/tsconfig.json&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;test&quot;: &#123;</span><br><span class="line">    &quot;karma&quot;: &#123;</span><br><span class="line">      &quot;config&quot;: &quot;./karma.conf.js&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;defaults&quot;: &#123;</span><br><span class="line">    &quot;styleExt&quot;: &quot;css&quot;,</span><br><span class="line">    &quot;prefixInterfaces&quot;: false,</span><br><span class="line">    &quot;inline&quot;: &#123;</span><br><span class="line">      &quot;style&quot;: false,</span><br><span class="line">      &quot;template&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;spec&quot;: &#123;</span><br><span class="line">      &quot;class&quot;: false,</span><br><span class="line">      &quot;component&quot;: true,</span><br><span class="line">      &quot;directive&quot;: true,</span><br><span class="line">      &quot;module&quot;: false,</span><br><span class="line">      &quot;pipe&quot;: true,</span><br><span class="line">      &quot;service&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-从main-ts和index-html开始启动项目"><a href="#1-从main-ts和index-html开始启动项目" class="headerlink" title="1.从main.ts和index.html开始启动项目"></a>1.从main.ts和index.html开始启动项目</h3><blockquote>
+<p>整个项目的启动是从main.ts文件开始的,main.ts的文件内容如下所示,可能部分内容是有所区别的,但是问题不到(版本原因)<br>index.html文件是项目启动的参考文件</p>
+</blockquote>
+<p><strong>main.ts的文件内容如图所示</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//导入一些必要的库,以便于兼容,使angular能够正常运行在常见的浏览器</span><br><span class="line">import &apos;./polyfills.ts&apos;</span><br><span class="line"></span><br><span class="line">//使用什么模块启动整个应用</span><br><span class="line">import &#123; platformBrowserDynamic &#125; from &apos;@angular/platform-browser-dynamic&apos;;</span><br><span class="line"></span><br><span class="line">//开发者模式是否启用</span><br><span class="line">import &#123; enableProdMode &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">//导入环境配置,在打包部署的时候会用到</span><br><span class="line">import &#123; environment &#125; from &apos;./environments/environment&apos;;</span><br><span class="line"></span><br><span class="line">//导入主模块</span><br><span class="line">import &#123; AppModule &#125; from &apos;./app/app.module&apos;;</span><br><span class="line"></span><br><span class="line">//如果当前是生产环境,关闭开发者模式</span><br><span class="line">if (environment.production) &#123;</span><br><span class="line">  enableProdMode();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//整个程序从这个位置开始启动</span><br><span class="line">platformBrowserDynamic().bootstrapModule(AppModule);</span><br></pre></td></tr></table></figure>
+<p><strong>index.html文件</strong></p>
+<blockquote>
+<p>在这个文件的内容里面有一个 <strong><app-root>Loading…</app-root></strong></p>
+<blockquote>
+<p>这个东西你可以理解为组件的名称,具体的内容在跟组件中可以找到依据</p>
+<blockquote>
+<p>就是类似于vue的组件和组件民,这部分定义的是显示组件的位置,也就是组件的名称</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="2-项目的启动从主模块开始"><a href="#2-项目的启动从主模块开始" class="headerlink" title="2.项目的启动从主模块开始"></a>2.项目的启动从主模块开始</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//导入一些必要的包</span><br><span class="line">import &#123; BrowserModule &#125; from &apos;@angular/platform-browser&apos;;</span><br><span class="line">import &#123; NgModule &#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123; FormsModule &#125; from &apos;@angular/forms&apos;;</span><br><span class="line">import &#123; HttpModule &#125; from &apos;@angular/http&apos;;</span><br><span class="line"></span><br><span class="line">import &#123; AppComponent &#125; from &apos;./app.component&apos;;</span><br><span class="line"></span><br><span class="line">//模块元素装饰器,可以理解为是向模块里面添加内容的</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  //声明模块中拥有的内容,在这一部分,只能声明组件,指令和管道</span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent</span><br><span class="line">  ],</span><br><span class="line">  //导入需要的依赖内容----模块</span><br><span class="line">  imports: [</span><br><span class="line">    BrowserModule,</span><br><span class="line">    FormsModule,</span><br><span class="line">    HttpModule</span><br><span class="line">  ],</span><br><span class="line">  //在这里声明提供的服务</span><br><span class="line">  providers: [],</span><br><span class="line">  //声明主组件</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line">//导出一个模块</span><br><span class="line">export class AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-在主模块中-加载了主组件"><a href="#3-在主模块中-加载了主组件" class="headerlink" title="3.在主模块中,加载了主组件"></a>3.在主模块中,加载了主组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//定义组件,需要导入一个组件装饰器</span><br><span class="line">import &#123; Component &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">//组件元数据装饰器,会将元数据附加到typescript类中</span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-root&apos;,                            //组件名称----在index.html页面,组件名作为标签显示到页面上</span><br><span class="line">  //template: &apos;&lt;p&gt;&#123;&#123;title&#125;&#125;&lt;p/&gt;&apos;,                    //组件内容</span><br><span class="line">  templateUrl: &apos;./app.component.html&apos;,  </span><br><span class="line">  styleUrls: [&apos;./app.component.css&apos;]               //组件样式</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export class AppComponent &#123;</span><br><span class="line">  title = &apos;app works!&apos;;                            //组件要处理的业务逻辑部分(数据--方法---属性)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="主组件和样式文件"><a href="#主组件和样式文件" class="headerlink" title="主组件和样式文件"></a>主组件和样式文件</h3><blockquote>
+<p>app.component.html  和  app.component.css</p>
+<blockquote>
+<p>在主模块中使用的内容 和 样式文件</p>
+</blockquote>
+</blockquote>
+<pre><code>//将主模块中的数据渲染到  app.component.html 页面上   
+
+&lt;h1&gt;{{title}}&lt;/h1&gt;
+</code></pre>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/10/angular2/05-bootstrap和jquery的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih baru</strong>
+            <div class="article-nav-title">
+                
+                    05-插件使用第一种方式
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/10/angular2/03-项目目录结构解析/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih Tua</strong>
+            <div class="article-nav-title">03-项目简介</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            GaoHui &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo-GaoHuiWiki</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

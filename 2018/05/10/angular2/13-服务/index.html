@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang=Ch>
+<head>
+    <meta charset="utf-8">
+    
+    <title>13-服务 | GaoHui</title>
+    
+    
+        <meta name="keywords" content="biji" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="服务 封装了一项功能,并且可以通过注入的方式供其他使用的独立模块  服务可以分为很多种—-包括值,函数以及其他特性     如果在项目中有一段代码是很多组件都要使用的，那么最好的方式就是把它做成服务。   服务是一种在组件中共享功能的机制，当我们使用标签将多个组件组合在一起时我们需要操作一些数据或是需要做一些运算时，我们需要做一个服务；服务能帮我们引入外部的数据  old服务的种类 服务分为很多种">
+<meta name="keywords" content="biji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13-服务">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/angular2/13-服务/index.html">
+<meta property="og:site_name" content="GaoHui">
+<meta property="og:description" content="服务 封装了一项功能,并且可以通过注入的方式供其他使用的独立模块  服务可以分为很多种—-包括值,函数以及其他特性     如果在项目中有一段代码是很多组件都要使用的，那么最好的方式就是把它做成服务。   服务是一种在组件中共享功能的机制，当我们使用标签将多个组件组合在一起时我们需要操作一些数据或是需要做一些运算时，我们需要做一个服务；服务能帮我们引入外部的数据  old服务的种类 服务分为很多种">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/13-服务/img/service1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/angular2/13-服务/img/service02.png">
+<meta property="og:updated_time" content="2018-05-10T01:30:17.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="13-服务">
+<meta name="twitter:description" content="服务 封装了一项功能,并且可以通过注入的方式供其他使用的独立模块  服务可以分为很多种—-包括值,函数以及其他特性     如果在项目中有一段代码是很多组件都要使用的，那么最好的方式就是把它做成服务。   服务是一种在组件中共享功能的机制，当我们使用标签将多个组件组合在一起时我们需要操作一些数据或是需要做一些运算时，我们需要做一个服务；服务能帮我们引入外部的数据  old服务的种类 服务分为很多种">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/10/angular2/13-服务/img/service1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="GaoHui" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">GaoHui</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'pos',
+            PAGES: 'Pages',
+            CATEGORIES: 'kategori',
+            TAGS: 'tag',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>kategori</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular1
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ng基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/01-ng基础/01-ng基础/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-ng表达式
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/02-ng表达式/02-ng表达式/">表达式</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-ng指令
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/03-ng指令/03-ng指令/">指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-模块
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/04-模块/043-控制器/">controller</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/041-模块/">模块</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/042-作用域/">作用域</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-filter
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/05-filter/05-过滤器/">angularjs过滤器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-service
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/06-service/06-服务/">服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-http
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/07-http/07-http/">Http</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/08-form/08-选择框和表格/">选择框和表格</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            09-sql
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/09-sql/09-sql/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-dom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/10-dom/10-dom/">DOM</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            111-event
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/111-event/11-事件/">事件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-validate
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/12-validate/12-表单和输入验证/">表单和输入验证</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            13-全局api
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/13-全局api/13-全局api/">全局api</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            14-bootstrap
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/14-bootstrap/14-bootstrap使用/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            15-include
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/15-include/15-include/">页面包含</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-animation
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/16-animation/16-angularjs动画/">angularjs动画</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            17-inject
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/17-inject/17-依赖注入/">依赖注入</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            18-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/18-router/18-angularjs路由/">ng路由</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            19-conclusion
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/19-conclusion/19-知识点总结/">全局api</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            angular2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular2/01-简介/">01-angular概述</a></li>  <li class="file"><a href="/2018/05/10/angular2/02-开发环境搭建/">02-开发环境</a></li>  <li class="file"><a href="/2018/05/10/angular2/03-项目目录结构解析/">03-项目简介</a></li>  <li class="file"><a href="/2018/05/10/angular2/06-知识点集锦/">06-知识小结</a></li>  <li class="file"><a href="/2018/05/10/angular2/04-项目启动过程/">04-项目启动</a></li>  <li class="file"><a href="/2018/05/10/angular2/05-bootstrap和jquery的使用/">05-插件使用第一种方式</a></li>  <li class="file"><a href="/2018/05/10/angular2/11-路由操作/">11-路由</a></li>  <li class="file"><a href="/2018/05/10/angular2/07-管道--过滤器/">07-管道</a></li>  <li class="file"><a href="/2018/05/10/angular2/08-组件化开发/">08-ng2Pro中的组件化开发</a></li>  <li class="file"><a href="/2018/05/10/angular2/09-组件之间的数据传递/">09-组件之间的数据传递</a></li>  <li class="file"><a href="/2018/05/10/angular2/10-生命周期钩子/">10-生命周期钩子</a></li>  <li class="file"><a href="/2018/05/10/angular2/12-数据请求/">12-数据请求</a></li>  <li class="file active"><a href="/2018/05/10/angular2/13-服务/">13-服务</a></li>  <li class="file"><a href="/2018/05/10/angular2/14-表单/">14-表单处理</a></li>  <li class="file"><a href="/2018/05/10/angular2/15-动画/">15-动画</a></li>  <li class="file"><a href="/2018/05/10/angular2/17-i18n-国际化/">17-i18n</a></li>  <li class="file"><a href="/2018/05/10/angular2/18-自动化测试/">18-自动化测试</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-1-核心概念/">19-angular核心</a></li>  <li class="file"><a href="/2018/05/10/angular2/16-指令/">16-自定义指令</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-3-优质学习资源收集/">21-angular优质学习资源</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-2-angular-ui库/">20-ui库</a></li>  <li class="file"><a href="/2018/05/10/angular2/999-核心知识点/">22-核心知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ionic2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ionic2/01-ionic概述/">01-ionic知识点</a></li>  <li class="file"><a href="/2018/05/10/ionic2/03-ionic组件的使用-上/">03-组件使用上</a></li>  <li class="file"><a href="/2018/05/10/ionic2/05-组件补充/">05-导航</a></li>  <li class="file"><a href="/2018/05/10/ionic2/04-ionic组件的使用-下/">04-组件使用下</a></li>  <li class="file"><a href="/2018/05/10/ionic2/02-ionic安装与使用/">02-ionic的安装与使用</a></li>  <li class="file"><a href="/2018/05/10/ionic2/06-主体化/">06-主题设置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-mysql基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/01-mysql基础/01-mysql基础/">mysql 的基本使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-数据库和表的相关信息
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/02-数据库和表的相关信息/02-获取数据库和表的相关信息/">获取 数据库和表的相关信息</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-常见查询操作
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/03-常见查询操作/03-常见的查询的例子/">常见的查询</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            00-学习资料参考
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/00-学习资料参考/">react优质学习资源</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-react入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/01-react入门/01-react入门/">react入门</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-jsx语法
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/02-jsx语法/02-jsx语法/">jsx语法</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-组件基本使用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/04-组件基本使用/">组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-state和生命周期
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/05-state和生命周期/">state和生命周期</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-组件传值
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/06-组件传值/06-组件传值/">组件传值</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-组件补充
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/07-组件补充/07-组件补充/">组件补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-数据请求
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/08-数据请求/08-fetchApi-数据请求/">react数据请求</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/10-form/10-forms/">forms</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/12-router/12-router/">react-router</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-redux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/16-redux/16-redux/">redux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            21-状态提升
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/21-状态提升/21-状态提升/">状态提升</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            22-组合和继承
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/22-组合和继承/22-组合和继承/">组合和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            23-react编程思想
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/23-react编程思想/23-react编程思想/">react编程思想</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            555-开发环境搭建
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/555-开发环境搭建/555-1-react基本开发环境搭建/">基本开发环境</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ts
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ts入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/01-ts入门/01-typescript入门/">typescript知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-类型注解
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/02-类型注解/02-类型注解/">强类型和类型注解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-接口
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/03-接口/03-接口/">接口</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-类
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/04-类/04-类/">类和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-模块化
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/05-模块化/05-模块化/">模块化</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-装饰器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/06-装饰器/06-装饰器/">装饰器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-简单总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/07-简单总结/07-简单总结/">ts简单总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/01-vueStart/">01-vue入门</a></li>  <li class="file"><a href="/2018/05/10/vue/02-base1/">02-vue基础</a></li>  <li class="file"><a href="/2018/05/10/vue/03-directive/">03-vue指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            weChat
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/weChat/01-入门/">01-微信小程序入门</a></li>  <li class="file"><a href="/2018/05/10/weChat/02-基本知识点/">02-基础知识点</a></li>  <li class="file"><a href="/2018/05/10/weChat/03-豆瓣电影的基本实现/">03-小程序开发实战</a></li>  <li class="file"><a href="/2018/05/10/weChat/04-组件/">04-微信小程序组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂项
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/杂项/99-1-cros-proxy-jsonp/">跨域问题解决方案</a></li>  <li class="file"><a href="/2018/05/10/杂项/88-1-flex+rem/">移动端布局</a></li>  <li class="file"><a href="/2018/05/10/杂项/99-2-websocket/">WebSocket</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">介绍</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-angular2/13-服务" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/angular2/">angular2</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/10/angular2/13-服务/">
+            <time datetime="2018-05-10T00:36:05.033Z" itemprop="datePublished">2018-05-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/angular2/13-服务.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/angular2/13-服务.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/angular2/13-服务.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            13-服务
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><blockquote>
+<p>封装了一项功能,并且可以通过注入的方式供其他使用的独立模块</p>
+<blockquote>
+<p>服务可以分为很多种—-包括值,函数以及其他特性</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p> 如果在项目中有一段代码是很多组件都要使用的，那么最好的方式就是把它做成服务。</p>
+</blockquote>
+<blockquote>
+<p><strong>服务是一种在组件中共享功能的机制</strong>，当我们使用标签将多个组件组合在一起时我们需要操作一些数据或是需要做一些运算时，我们需要做一个服务；服务能帮我们引入外部的数据</p>
+</blockquote>
+<h3 id="old"><a href="#old" class="headerlink" title="old"></a>old</h3><h4 id="服务的种类"><a href="#服务的种类" class="headerlink" title="服务的种类"></a>服务的种类</h4><blockquote>
+<p>服务分为很多种，包括：值、函数，以及应用所需的特性。</p>
+</blockquote>
+<p><strong>以下是几种常见的服务：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">日志服务</span><br><span class="line">数据服务</span><br><span class="line">消息总线</span><br><span class="line">税款计算器</span><br><span class="line">应用程序配置</span><br></pre></td></tr></table></figure>
+<h4 id="服务的生成-基本使用"><a href="#服务的生成-基本使用" class="headerlink" title="服务的生成(基本使用)"></a>服务的生成(基本使用)</h4><p>1.创建服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng g service serviceName/file</span><br></pre></td></tr></table></figure>
+<p>2.提供服务</p>
+<blockquote>
+<p>提供的服务需要在app.module.ts中显式声明</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.先导入</span><br><span class="line">    import &#123; HeroService &#125; from &apos;./hero.service&apos;;</span><br><span class="line"></span><br><span class="line">2.再声明</span><br><span class="line">    providers: [HeroService],</span><br></pre></td></tr></table></figure>
+<p>3.服务实现的功能</p>
+<blockquote>
+<p>也就是说这个服务是做什么的</p>
+</blockquote>
+<p><strong>以一个提供数据的服务为例</strong></p>
+<p><img src="img/service1.png" alt=""></p>
+<p>4.使用服务</p>
+<p><img src="img/service02.png" alt=""></p>
+<h4 id="服务的应用"><a href="#服务的应用" class="headerlink" title="服务的应用"></a>服务的应用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">日志服务</span><br><span class="line">数据服务</span><br><span class="line">消息总线</span><br><span class="line">税款计算器</span><br><span class="line">应用程序配置</span><br></pre></td></tr></table></figure>
+<h5 id="数据服务"><a href="#数据服务" class="headerlink" title="数据服务"></a>数据服务</h5><blockquote>
+<p>将项目中使用到的相关数据获取的操作都分离出来,做成一个可复用的可注入的服务</p>
+</blockquote>
+<p><strong>1.定义服务Appservice</strong></p>
+<blockquote>
+<p>首先使用命令行生成一个服务</p>
+<blockquote>
+<p><strong>ng g service service/app</strong></p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Injectable&#125; from &quot;@angular/core&quot;;</span><br><span class="line">import &#123;Http, Jsonp&#125; from &quot;@angular/http&quot;;</span><br><span class="line">import &quot;rxjs/add/operator/map&quot;;</span><br><span class="line">@Injectable()</span><br><span class="line">export class AppService &#123;</span><br><span class="line">  constructor(public http:Http, public jsonp:Jsonp) &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  // http.get</span><br><span class="line">  httpGet(url, params) &#123;</span><br><span class="line">    return this.http.get(url, &#123;search: params&#125;).map(result=&gt;result.json());</span><br><span class="line">  &#125;</span><br><span class="line">  // http.post</span><br><span class="line">  httpPost(url, params) &#123;</span><br><span class="line">    return this.http.post(url, params).map(result=&gt;result.json());</span><br><span class="line">  &#125;</span><br><span class="line">  // jsonp</span><br><span class="line">  jsonpGet(url, params) &#123;</span><br><span class="line">    return this.jsonp.get(url, &#123;search: params&#125;).map(result=&gt;result.json());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.定义组件,加载服务</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Component, OnInit&#125; from &quot;@angular/core&quot;;</span><br><span class="line">// 获取路由传递传递过来的params(id) 增加模块激活的路由(ActivatedRoute)</span><br><span class="line">import &#123;ActivatedRoute&#125; from &quot;@angular/router&quot;;</span><br><span class="line">import &#123;AppService&#125; from &quot;./app.service&quot;;</span><br><span class="line">import &#123;URLSearchParams&#125; from &quot;@angular/http&quot;;</span><br><span class="line">@Component(&#123;</span><br><span class="line">    selector: &quot;my-info&quot;,</span><br><span class="line">    templateUrl: &quot;../templates/about-info.html&quot;,</span><br><span class="line">    providers: [AppService]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export class AboutInfoComponent implements OnInit &#123;</span><br><span class="line">    // 定义一个变量, 获取服务方法取得的数据</span><br><span class="line">    info:Number;</span><br><span class="line">    data:Array&lt;Object&gt;;</span><br><span class="line">    // 初始化变量, 这里必须加修饰词 public private, 初始化服务, 然后使用服务方法,调取数据</span><br><span class="line">    constructor(public infos:AppServer) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 方法中操作id, 通过id查询信息等等</span><br><span class="line">    ngOnInit()&#123;</span><br><span class="line">        var url = &quot;http://localhost:3000/login&quot;;</span><br><span class="line">        var params = new URLSearchParams();</span><br><span class="line">        params.set(&quot;id&quot;, &quot;1&quot;);</span><br><span class="line">        // 传递过来的不是promise 所以要subscribe执行</span><br><span class="line">        this.infos.getHttp(url, params).subscribe(res=&gt; &#123;</span><br><span class="line">            console.log(res); </span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.服务的全局加载</strong></p>
+<blockquote>
+<p>上面组件中局部加载了这个服务， 如果需要全局导入服务 app.module.ts文件中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">providers: [AppService]</span><br></pre></td></tr></table></figure>
+<h5 id="日志服务"><a href="#日志服务" class="headerlink" title="日志服务"></a>日志服务</h5><blockquote>
+<p>以下实例是一个简单的日志服务，用于把日志记录到浏览器的控制台：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export class Logger &#123;</span><br><span class="line">  log(msg: any)   &#123; console.log(msg); &#125;</span><br><span class="line">  error(msg: any) &#123; console.error(msg); &#125;</span><br><span class="line">  warn(msg: any)  &#123; console.warn(msg); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p><strong>1.生成服务</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ng g service service/data</span><br></pre></td></tr></table></figure>
+<p><strong>2.基本模板</strong></p>
+<blockquote>
+<p>建议每一个服务都加上@Injectable()装饰器。 注意： 当 TypeScript 看到@Injectable()装饰器时，就会记下本服务的元数据。 如果 Angular 需要往这个服务中注入其它依赖，就会使用这些元数据。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class DataService &#123;</span><br><span class="line"></span><br><span class="line">  constructor() &#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><blockquote>
+<p>定义一个提供数据的服务</p>
+</blockquote>
+<p><strong>1. 定义本地json—-数据模拟</strong></p>
+<blockquote>
+<p>data.json</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;   </span><br><span class="line">  &quot;data&quot;: [   </span><br><span class="line">    &#123;   </span><br><span class="line">      &quot;name&quot;: &quot;HTML&quot;   </span><br><span class="line">    &#125;,      </span><br><span class="line">    &#123;   </span><br><span class="line">      &quot;name&quot;: &quot;Javascript&quot;   </span><br><span class="line">    &#125;,   </span><br><span class="line">   &#123;   </span><br><span class="line">     &quot;name&quot;: &quot;Angular&quot;   </span><br><span class="line">   &#125;   </span><br><span class="line">  ]  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.定义服务功能</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">import &#123; Http &#125; from &apos;@angular/http&apos;;</span><br><span class="line">import &apos;rxjs/add/operator/toPromise&apos;;  </span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class DataService &#123;</span><br><span class="line"></span><br><span class="line">    constructor(</span><br><span class="line">        public $http: Http</span><br><span class="line">    ) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    getData() &#123;</span><br><span class="line"></span><br><span class="line">        console.log(1)</span><br><span class="line"></span><br><span class="line">        const url = &apos;./assets/data.json&apos;;</span><br><span class="line">        return this.$http.get(url)</span><br><span class="line">            .toPromise()</span><br><span class="line">            .then(res =&gt; res.json())</span><br><span class="line">            .catch(this.handleError); </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private handleError(error: any): Promise&lt;any&gt; &#123;   </span><br><span class="line">        console.error(&apos;An error occurred&apos;, error); // for demo purposes only   </span><br><span class="line">            return Promise.reject(error.message || error);  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.使用服务</strong></p>
+<blockquote>
+<p>在这里是在当前组件使用</p>
+<blockquote>
+<p>在这里必须使用异步的方式获取数据</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, OnInit &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import &#123;DataService&#125; from &apos;../../service/data.service&apos;;   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-service-test&apos;,</span><br><span class="line">  templateUrl: &apos;./service-test.component.html&apos;,</span><br><span class="line">  styleUrls: [&apos;./service-test.component.css&apos;],</span><br><span class="line">  providers: [DataService]</span><br><span class="line">&#125;)</span><br><span class="line">export class ServiceTestComponent implements OnInit &#123;</span><br><span class="line"></span><br><span class="line">  constructor(</span><br><span class="line">      public dataService:DataService</span><br><span class="line">  ) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">      </span><br><span class="line">      this.dataService.getData().then((res)=&gt;&#123;</span><br><span class="line">          console.log(res)</span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="常用服务"><a href="#常用服务" class="headerlink" title="常用服务"></a>常用服务</h4><p><strong>1.get</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">get() &#123;   </span><br><span class="line">  return this.http.get(url)   </span><br><span class="line">         .toPromise()   </span><br><span class="line">         .then(response =&gt; response.json() )   </span><br><span class="line">         .catch(this.handleError);  </span><br><span class="line">&#125;     </span><br><span class="line"></span><br><span class="line">private handleError(error: any): Promise&lt;any&gt; &#123;   </span><br><span class="line">  console.error(&apos;An error occurred&apos;, error); // for demo purposes only   </span><br><span class="line">  return Promise.reject(error.message || error);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.post</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private headers = new Headers(&#123;&apos;Content-type&apos;: &apos;application/json&apos;&#125;);   </span><br><span class="line"></span><br><span class="line">create() &#123;   </span><br><span class="line">  return this.http   </span><br><span class="line">         .post(url, JSON.stringify(hero), &#123;headers: this.headers&#125;)   </span><br><span class="line">         .toPromise()   </span><br><span class="line">         .then(response =&gt; response.json())   </span><br><span class="line">         .catch(this.handleError);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.update</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private headers = new Headers(&#123;&apos;Content-type&apos;: &apos;application/json&apos;&#125;);   </span><br><span class="line"></span><br><span class="line">update() &#123;   </span><br><span class="line">  return this.http   </span><br><span class="line">         .put(url, JSON.stringify(hero), &#123;headers: this.headers&#125;)   </span><br><span class="line">         .toPromise()   </span><br><span class="line">         .then(response =&gt; response.json())   </span><br><span class="line">         .catch(this.handleError);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4.delete</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private headers = new Headers(&#123;&apos;Content-type&apos;: &apos;application/json&apos;&#125;);   </span><br><span class="line"></span><br><span class="line">delete() &#123;   </span><br><span class="line">  return this.http</span><br><span class="line">        .delete(url, &#123;headers: this.headers&#125;)   </span><br><span class="line">        .toPromise()   </span><br><span class="line">        .then(() =&gt; null)   </span><br><span class="line">        .catch(this.handleError);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/10/angular2/14-表单/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih baru</strong>
+            <div class="article-nav-title">
+                
+                    14-表单处理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/10/angular2/12-数据请求/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih Tua</strong>
+            <div class="article-nav-title">12-数据请求</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            GaoHui &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo-GaoHuiWiki</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

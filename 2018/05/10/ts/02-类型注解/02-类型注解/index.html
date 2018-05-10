@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang=Ch>
+<head>
+    <meta charset="utf-8">
+    
+    <title>强类型和类型注解 | GaoHui</title>
+    
+    
+        <meta name="keywords" content="biji" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="强类型和类型注解js本身是一种弱类型的语言 123没有严格的变量声明规范变量的类型根据变量的值确定现有变量值,再有变量类型 强类型  类似于c语言 java….  在变量定义的时候确定变量的类型 对变量加以严格约束   123456int : 整型float: 浮点型double : 双精度    .............. 在ts中使用类型注解的形式显示语言强类型 什么是类型注解 TypeSc">
+<meta name="keywords" content="biji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强类型和类型注解">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/ts/02-类型注解/02-类型注解/index.html">
+<meta property="og:site_name" content="GaoHui">
+<meta property="og:description" content="强类型和类型注解js本身是一种弱类型的语言 123没有严格的变量声明规范变量的类型根据变量的值确定现有变量值,再有变量类型 强类型  类似于c语言 java….  在变量定义的时候确定变量的类型 对变量加以严格约束   123456int : 整型float: 浮点型double : 双精度    .............. 在ts中使用类型注解的形式显示语言强类型 什么是类型注解 TypeSc">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-05-10T01:02:40.320Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="强类型和类型注解">
+<meta name="twitter:description" content="强类型和类型注解js本身是一种弱类型的语言 123没有严格的变量声明规范变量的类型根据变量的值确定现有变量值,再有变量类型 强类型  类似于c语言 java….  在变量定义的时候确定变量的类型 对变量加以严格约束   123456int : 整型float: 浮点型double : 双精度    .............. 在ts中使用类型注解的形式显示语言强类型 什么是类型注解 TypeSc">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="GaoHui" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">GaoHui</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'pos',
+            PAGES: 'Pages',
+            CATEGORIES: 'kategori',
+            TAGS: 'tag',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cari" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>kategori</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular1
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ng基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/01-ng基础/01-ng基础/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-ng表达式
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/02-ng表达式/02-ng表达式/">表达式</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-ng指令
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/03-ng指令/03-ng指令/">指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-模块
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/04-模块/043-控制器/">controller</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/041-模块/">模块</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/042-作用域/">作用域</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-filter
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/05-filter/05-过滤器/">angularjs过滤器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-service
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/06-service/06-服务/">服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-http
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/07-http/07-http/">Http</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/08-form/08-选择框和表格/">选择框和表格</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            09-sql
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/09-sql/09-sql/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-dom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/10-dom/10-dom/">DOM</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            111-event
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/111-event/11-事件/">事件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-validate
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/12-validate/12-表单和输入验证/">表单和输入验证</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            13-全局api
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/13-全局api/13-全局api/">全局api</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            14-bootstrap
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/14-bootstrap/14-bootstrap使用/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            15-include
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/15-include/15-include/">页面包含</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-animation
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/16-animation/16-angularjs动画/">angularjs动画</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            17-inject
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/17-inject/17-依赖注入/">依赖注入</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            18-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/18-router/18-angularjs路由/">ng路由</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            19-conclusion
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/19-conclusion/19-知识点总结/">全局api</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular2/01-简介/">01-angular概述</a></li>  <li class="file"><a href="/2018/05/10/angular2/02-开发环境搭建/">02-开发环境</a></li>  <li class="file"><a href="/2018/05/10/angular2/03-项目目录结构解析/">03-项目简介</a></li>  <li class="file"><a href="/2018/05/10/angular2/06-知识点集锦/">06-知识小结</a></li>  <li class="file"><a href="/2018/05/10/angular2/04-项目启动过程/">04-项目启动</a></li>  <li class="file"><a href="/2018/05/10/angular2/05-bootstrap和jquery的使用/">05-插件使用第一种方式</a></li>  <li class="file"><a href="/2018/05/10/angular2/11-路由操作/">11-路由</a></li>  <li class="file"><a href="/2018/05/10/angular2/07-管道--过滤器/">07-管道</a></li>  <li class="file"><a href="/2018/05/10/angular2/08-组件化开发/">08-ng2Pro中的组件化开发</a></li>  <li class="file"><a href="/2018/05/10/angular2/09-组件之间的数据传递/">09-组件之间的数据传递</a></li>  <li class="file"><a href="/2018/05/10/angular2/10-生命周期钩子/">10-生命周期钩子</a></li>  <li class="file"><a href="/2018/05/10/angular2/12-数据请求/">12-数据请求</a></li>  <li class="file"><a href="/2018/05/10/angular2/13-服务/">13-服务</a></li>  <li class="file"><a href="/2018/05/10/angular2/14-表单/">14-表单处理</a></li>  <li class="file"><a href="/2018/05/10/angular2/15-动画/">15-动画</a></li>  <li class="file"><a href="/2018/05/10/angular2/17-i18n-国际化/">17-i18n</a></li>  <li class="file"><a href="/2018/05/10/angular2/18-自动化测试/">18-自动化测试</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-1-核心概念/">19-angular核心</a></li>  <li class="file"><a href="/2018/05/10/angular2/16-指令/">16-自定义指令</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-3-优质学习资源收集/">21-angular优质学习资源</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-2-angular-ui库/">20-ui库</a></li>  <li class="file"><a href="/2018/05/10/angular2/999-核心知识点/">22-核心知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ionic2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ionic2/01-ionic概述/">01-ionic知识点</a></li>  <li class="file"><a href="/2018/05/10/ionic2/03-ionic组件的使用-上/">03-组件使用上</a></li>  <li class="file"><a href="/2018/05/10/ionic2/05-组件补充/">05-导航</a></li>  <li class="file"><a href="/2018/05/10/ionic2/04-ionic组件的使用-下/">04-组件使用下</a></li>  <li class="file"><a href="/2018/05/10/ionic2/02-ionic安装与使用/">02-ionic的安装与使用</a></li>  <li class="file"><a href="/2018/05/10/ionic2/06-主体化/">06-主题设置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-mysql基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/01-mysql基础/01-mysql基础/">mysql 的基本使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-数据库和表的相关信息
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/02-数据库和表的相关信息/02-获取数据库和表的相关信息/">获取 数据库和表的相关信息</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-常见查询操作
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/03-常见查询操作/03-常见的查询的例子/">常见的查询</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            00-学习资料参考
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/00-学习资料参考/">react优质学习资源</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-react入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/01-react入门/01-react入门/">react入门</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-jsx语法
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/02-jsx语法/02-jsx语法/">jsx语法</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-组件基本使用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/04-组件基本使用/">组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-state和生命周期
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/05-state和生命周期/">state和生命周期</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-组件传值
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/06-组件传值/06-组件传值/">组件传值</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-组件补充
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/07-组件补充/07-组件补充/">组件补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-数据请求
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/08-数据请求/08-fetchApi-数据请求/">react数据请求</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/10-form/10-forms/">forms</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/12-router/12-router/">react-router</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-redux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/16-redux/16-redux/">redux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            21-状态提升
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/21-状态提升/21-状态提升/">状态提升</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            22-组合和继承
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/22-组合和继承/22-组合和继承/">组合和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            23-react编程思想
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/23-react编程思想/23-react编程思想/">react编程思想</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            555-开发环境搭建
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/555-开发环境搭建/555-1-react基本开发环境搭建/">基本开发环境</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            ts
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ts入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/01-ts入门/01-typescript入门/">typescript知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            02-类型注解
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2018/05/10/ts/02-类型注解/02-类型注解/">强类型和类型注解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-接口
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/03-接口/03-接口/">接口</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-类
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/04-类/04-类/">类和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-模块化
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/05-模块化/05-模块化/">模块化</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-装饰器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/06-装饰器/06-装饰器/">装饰器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-简单总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/07-简单总结/07-简单总结/">ts简单总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/01-vueStart/">01-vue入门</a></li>  <li class="file"><a href="/2018/05/10/vue/02-base1/">02-vue基础</a></li>  <li class="file"><a href="/2018/05/10/vue/03-directive/">03-vue指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            weChat
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/weChat/01-入门/">01-微信小程序入门</a></li>  <li class="file"><a href="/2018/05/10/weChat/02-基本知识点/">02-基础知识点</a></li>  <li class="file"><a href="/2018/05/10/weChat/03-豆瓣电影的基本实现/">03-小程序开发实战</a></li>  <li class="file"><a href="/2018/05/10/weChat/04-组件/">04-微信小程序组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂项
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/杂项/99-1-cros-proxy-jsonp/">跨域问题解决方案</a></li>  <li class="file"><a href="/2018/05/10/杂项/88-1-flex+rem/">移动端布局</a></li>  <li class="file"><a href="/2018/05/10/杂项/99-2-websocket/">WebSocket</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">介绍</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-ts/02-类型注解/02-类型注解" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/ts/">ts</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/ts/02-类型注解/">02-类型注解</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/10/ts/02-类型注解/02-类型注解/">
+            <time datetime="2018-05-10T00:35:41.401Z" itemprop="datePublished">2018-05-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/ts/02-类型注解/02-类型注解.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/ts/02-类型注解/02-类型注解.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/ts/02-类型注解/02-类型注解.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            强类型和类型注解
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="强类型和类型注解"><a href="#强类型和类型注解" class="headerlink" title="强类型和类型注解"></a>强类型和类型注解</h2><p><strong>js本身是一种弱类型的语言</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">没有严格的变量声明规范</span><br><span class="line">变量的类型根据变量的值确定</span><br><span class="line">现有变量值,再有变量类型</span><br></pre></td></tr></table></figure>
+<p><strong>强类型</strong></p>
+<blockquote>
+<p>类似于c语言 java….</p>
+<blockquote>
+<p>在变量定义的时候确定变量的类型</p>
+<p>对变量加以严格约束</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int : 整型</span><br><span class="line">float: 浮点型</span><br><span class="line">double : 双精度</span><br><span class="line"></span><br><span class="line">    ..............</span><br></pre></td></tr></table></figure>
+<p><strong>在ts中使用类型注解的形式显示语言强类型</strong></p>
+<h3 id="什么是类型注解"><a href="#什么是类型注解" class="headerlink" title="什么是类型注解"></a>什么是类型注解</h3><blockquote>
+<p>TypeScript里的类型注解是一种轻量级的为函数或变量添加约束的方式</p>
+<blockquote>
+<p>在定义变量的时候添加类型注解,可以预防一些编译时的错误</p>
+</blockquote>
+</blockquote>
+<h4 id="js类型类型"><a href="#js类型类型" class="headerlink" title="js类型类型"></a>js类型类型</h4><blockquote>
+<p>在讲解typescript的基础数据类型之前,先看一下js的数据类型</p>
+<blockquote>
+<p>js的六大数据类型: </p>
+<blockquote>
+<p><strong>js中有六种数据类型，包括五种基本数据类型（Number,String,Boolean,Null,Undefined）,和一种混合数据类型（Object）。</strong></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>typescript支持的数据类型和JavaScript基本上完全相同</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>在此基础上增加了枚举数据类型以方便我们使用</strong></p>
+</blockquote>
+</blockquote>
+<h4 id="常见数据类型的类型注解"><a href="#常见数据类型的类型注解" class="headerlink" title="常见数据类型的类型注解"></a>常见数据类型的类型注解</h4><p>1.boolean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//添加类型注解----当前的数据类型值只能是boolean类型</span><br><span class="line">let bool:boolean = false</span><br></pre></td></tr></table></figure>
+<p>2.number</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//添加类型注解 ---- 当前的数据类型只能是数字类型</span><br><span class="line">let num:number = 1</span><br></pre></td></tr></table></figure>
+<p>3.string</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//添加类型注解----当前的数据类型只能是字符串类型----在此基础上,还支持模板字符串的使用</span><br><span class="line">let str:string=&quot;坏孩子&quot;</span><br><span class="line">let sentence = `我们都是$&#123;str&#125;,我们都是坏孩子`</span><br></pre></td></tr></table></figure>
+<p>4.null和undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let n:null = null</span><br></pre></td></tr></table></figure>
+<p>5.undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let u:undefined = undefined</span><br></pre></td></tr></table></figure>
+<p>6.array</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//定义数组并添加类型注解的形式</span><br><span class="line">    //添加类型注解,数组里面的元素只能是数字类型 ---- 这是第一种方式</span><br><span class="line">    let arr:number[] = [1,2,3]</span><br><span class="line"></span><br><span class="line">    //       使用数组泛型                                      ---- 这是第二种方式</span><br><span class="line">    let arr:Array&lt;number&gt; = [1,2,3]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//定义元组Tuple----元组里面的数据可以是不同的数据类型</span><br><span class="line">let x: [string, number] = [&quot;1&quot;,2]</span><br></pre></td></tr></table></figure>
+<h4 id="类型注解补充"><a href="#类型注解补充" class="headerlink" title="类型注解补充"></a>类型注解补充</h4><p>1.enum   枚举      </p>
+<blockquote>
+<p>可以简单理解为遍历</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//在默认的情况下,从0开始赋予编号,也可以手动指定成员的数值,进行手动编号</span><br><span class="line">enum Color &#123;Red, Green, Blue&#125;</span><br><span class="line"></span><br><span class="line">//(function (Color) &#123;</span><br><span class="line">//  Color[Color[&quot;Red&quot;] = 0] = &quot;Red&quot;;</span><br><span class="line">//  Color[Color[&quot;Green&quot;] = 1] = &quot;Green&quot;;</span><br><span class="line">//  Color[Color[&quot;Blue&quot;] = 2] = &quot;Blue&quot;;</span><br><span class="line">//&#125;)(Color || (Color = &#123;&#125;));</span><br><span class="line"></span><br><span class="line">let c: Color = Color.Green;</span><br><span class="line"></span><br><span class="line">console.log(Color)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//手动设置成员的编号</span><br><span class="line">enum Color &#123;Red = 1, Green, Blue&#125;</span><br></pre></td></tr></table></figure>
+<p>2.any</p>
+<blockquote>
+<p>不对变量的值进行检查,也就是说变量的值可以是任意类型的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let notSure: any = 4;</span><br></pre></td></tr></table></figure>
+<p>3.void</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有参数    有返回值</span><br><span class="line">有参数    无返回值</span><br><span class="line">无参数    有返回值</span><br><span class="line">无参数    无返回值</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在定义一个函数的时候 如果有个函数没有返回值,可以使用void声明</p>
+<blockquote>
+<p>给一个变量使用类型注解的时候没有太大意义,只能给值  undefined / null</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function fn:void &#123; &quot;这是函数体&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>4.never</p>
+<blockquote>
+<p>never类型表示的是哪些永不存在的值</p>
+<blockquote>
+<p>never可以赋值个任何类型,任何类型的值都不能赋值给never</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型； 变量也可能是 never类型，当它们被永不为真的类型保护所约束时。</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 返回never的函数必须存在无法达到的终点</span><br><span class="line">function error(message: string): never &#123;</span><br><span class="line">    throw new Error(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 推断的返回值类型为never</span><br><span class="line">function fail() &#123;</span><br><span class="line">    return error(&quot;Something failed&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 返回never的函数必须存在无法达到的终点</span><br><span class="line">function infiniteLoop(): never &#123;</span><br><span class="line">    while (true) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.断言</p>
+<blockquote>
+<p>断言好比类型转换,但是不进行特殊的数据检查和解构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//&lt;&gt;语法</span><br><span class="line">let someValue: any = &quot;this is a string&quot;;</span><br><span class="line"></span><br><span class="line">let strLength: number = (&lt;string&gt;someValue).length;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//as语法</span><br><span class="line">let someValue: any = &quot;this is a string&quot;;</span><br><span class="line"></span><br><span class="line">let strLength: number = (someValue as string).length;</span><br></pre></td></tr></table></figure>
+<h4 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//在这里,传递参数的时候给这个参数添加一个类型:string</span><br><span class="line">function greeter(person:string) &#123;</span><br><span class="line">    return &quot;Hello, &quot; + person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//var user = &quot;Jane User&quot;;</span><br><span class="line"></span><br><span class="line">//在这里,尝试修改一些user的值变成一个数组</span><br><span class="line"></span><br><span class="line">var user = [1,2,3]</span><br><span class="line"></span><br><span class="line">document.body.innerHTML = greeter(user);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述代码在编译的过程中会发生错误</p>
+<blockquote>
+<p>TypeScript提供了静态的代码分析，它可以分析代码结构和提供的类型注解。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">greeter.ts(11,35): error TS2345: Argument of type &apos;number[]&apos; is not assignable to parameter of type &apos;string&apos;.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要注意的是尽管有错误，greeter.js文件还是被创建了。 </p>
+<blockquote>
+<p>就算你的代码里有错误，你仍然可以使用TypeScript。但在这种情况下，TypeScript会警告你代码可能不会按预期执行。</p>
+</blockquote>
+</blockquote>
+<h3 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h3><h4 id="基本数据类型和复杂数据类型"><a href="#基本数据类型和复杂数据类型" class="headerlink" title="基本数据类型和复杂数据类型"></a>基本数据类型和复杂数据类型</h4><blockquote>
+<p>检测基本数据类型: typeof<br>检测复杂数据类型: instanceof</p>
+</blockquote>
+<p><strong>补充1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typeof 1    -----  number</span><br><span class="line">typeof 1 + &quot;2&quot;   -----  number2</span><br><span class="line">typeof -&apos;2&apos;   -----  number</span><br><span class="line">typeof 1-&apos;2&apos;   -----  number-&quot;2&quot;  NaN</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">typeof  null              object</span><br><span class="line">typeof  undefined         undefined</span><br><span class="line"></span><br><span class="line">null==undefined     true</span><br><span class="line"></span><br><span class="line">null===undefined    false</span><br></pre></td></tr></table></figure>
+<p><strong>补充2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function fn()&#123;&#125;</span><br><span class="line"></span><br><span class="line">fn instanceof Function</span><br><span class="line"></span><br><span class="line">[] instanceof Array</span><br><span class="line"></span><br><span class="line">&#123;&#125; instanceof Object</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">特殊 : Function</span><br><span class="line"></span><br><span class="line">    所有的函数都是直接或者是间接通过Function构造函数创建</span><br><span class="line"></span><br><span class="line">    对象Object也是由Function构造函数创建</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/10/ts/03-接口/03-接口/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih baru</strong>
+            <div class="article-nav-title">
+                
+                    接口
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/10/ts/01-ts入门/01-typescript入门/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Lebih Tua</strong>
+            <div class="article-nav-title">typescript知识点</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            GaoHui &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo-GaoHuiWiki</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
