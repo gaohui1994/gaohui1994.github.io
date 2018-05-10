@@ -92,31 +92,6 @@
   </entry>
   
   <entry>
-    <title>状态提升</title>
-    <link href="http://yoursite.com/2018/05/08/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/"/>
-    <id>http://yoursite.com/2018/05/08/react/21-状态提升/21-状态提升/</id>
-    <published>2018-05-08T00:22:58.105Z</published>
-    <updated>2018-05-08T00:41:29.337Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;状态提升&quot;&gt;&lt;a href=&quot;#状态提升&quot; class=&quot;headerlink&quot; title=&quot;状态提升&quot;&gt;&lt;/a&gt;状态提升&lt;/h1&gt;
-      
-    
-    </summary>
-    
-      <category term="react" scheme="http://yoursite.com/categories/react/"/>
-    
-      <category term="21-状态提升" scheme="http://yoursite.com/categories/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>redux</title>
     <link href="http://yoursite.com/2018/05/08/react/16-redux/16-redux/"/>
     <id>http://yoursite.com/2018/05/08/react/16-redux/16-redux/</id>
@@ -140,6 +115,31 @@
       <category term="react" scheme="http://yoursite.com/categories/react/"/>
     
       <category term="16-redux" scheme="http://yoursite.com/categories/react/16-redux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>状态提升</title>
+    <link href="http://yoursite.com/2018/05/08/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/"/>
+    <id>http://yoursite.com/2018/05/08/react/21-状态提升/21-状态提升/</id>
+    <published>2018-05-08T00:22:58.105Z</published>
+    <updated>2018-05-08T00:41:29.337Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;状态提升&quot;&gt;&lt;a href=&quot;#状态提升&quot; class=&quot;headerlink&quot; title=&quot;状态提升&quot;&gt;&lt;/a&gt;状态提升&lt;/h1&gt;
+      
+    
+    </summary>
+    
+      <category term="react" scheme="http://yoursite.com/categories/react/"/>
+    
+      <category term="21-状态提升" scheme="http://yoursite.com/categories/react/21-%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87/"/>
     
     
   </entry>
