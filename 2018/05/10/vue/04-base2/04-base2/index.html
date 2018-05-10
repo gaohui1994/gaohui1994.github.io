@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang=Ch>
+<head>
+    <meta charset="utf-8">
+    
+    <title>04-计算属性 | GaoHui</title>
+    
+    
+        <meta name="keywords" content="biji" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="第四部分 Vue.js基础特性（下）计算属性 computed data,el,methods属性一样,都是vm实例的属性(选项)  理解其大致意思即可   绑定表达式 一段绑定表达式可以由一个简单的js表达式和可选的一个或多个过滤器组成  123456789101112131415161718192021222324252627282930&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;htm">
+<meta name="keywords" content="biji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-计算属性">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/vue/04-base2/04-base2/index.html">
+<meta property="og:site_name" content="GaoHui">
+<meta property="og:description" content="第四部分 Vue.js基础特性（下）计算属性 computed data,el,methods属性一样,都是vm实例的属性(选项)  理解其大致意思即可   绑定表达式 一段绑定表达式可以由一个简单的js表达式和可选的一个或多个过滤器组成  123456789101112131415161718192021222324252627282930&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;htm">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://yoursite.com/2018/05/10/vue/04-base2/04-base2/img/06-构造器.bmp">
+<meta property="og:updated_time" content="2018-05-10T02:12:47.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="04-计算属性">
+<meta name="twitter:description" content="第四部分 Vue.js基础特性（下）计算属性 computed data,el,methods属性一样,都是vm实例的属性(选项)  理解其大致意思即可   绑定表达式 一段绑定表达式可以由一个简单的js表达式和可选的一个或多个过滤器组成  123456789101112131415161718192021222324252627282930&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;htm">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/10/vue/04-base2/04-base2/img/06-构造器.bmp">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="GaoHui" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">GaoHui</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular1
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ng基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/01-ng基础/01-ng基础/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-ng表达式
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/02-ng表达式/02-ng表达式/">表达式</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-ng指令
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/03-ng指令/03-ng指令/">指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-模块
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/04-模块/042-作用域/">作用域</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/043-控制器/">controller</a></li>  <li class="file"><a href="/2018/05/10/angular1/04-模块/041-模块/">模块</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-filter
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/05-filter/05-过滤器/">angularjs过滤器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-service
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/06-service/06-服务/">服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-http
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/07-http/07-http/">Http</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/08-form/08-选择框和表格/">选择框和表格</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            09-sql
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/09-sql/09-sql/">AngularJS概述</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-dom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/10-dom/10-dom/">DOM</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            111-event
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/111-event/11-事件/">事件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-validate
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/12-validate/12-表单和输入验证/">表单和输入验证</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            13-全局api
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/13-全局api/13-全局api/">全局api</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            14-bootstrap
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/14-bootstrap/14-bootstrap使用/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            15-include
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/15-include/15-include/">页面包含</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-animation
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/16-animation/16-angularjs动画/">angularjs动画</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            17-inject
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/17-inject/17-依赖注入/">依赖注入</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            18-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/18-router/18-angularjs路由/">ng路由</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            19-conclusion
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular1/19-conclusion/19-知识点总结/">全局api</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            angular2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/angular2/02-开发环境搭建/">02-开发环境</a></li>  <li class="file"><a href="/2018/05/10/angular2/01-简介/">01-angular概述</a></li>  <li class="file"><a href="/2018/05/10/angular2/05-bootstrap和jquery的使用/">05-插件使用第一种方式</a></li>  <li class="file"><a href="/2018/05/10/angular2/03-项目目录结构解析/">03-项目简介</a></li>  <li class="file"><a href="/2018/05/10/angular2/07-管道--过滤器/">07-管道</a></li>  <li class="file"><a href="/2018/05/10/angular2/06-知识点集锦/">06-知识小结</a></li>  <li class="file"><a href="/2018/05/10/angular2/08-组件化开发/">08-ng2Pro中的组件化开发</a></li>  <li class="file"><a href="/2018/05/10/angular2/09-组件之间的数据传递/">09-组件之间的数据传递</a></li>  <li class="file"><a href="/2018/05/10/angular2/10-生命周期钩子/">10-生命周期钩子</a></li>  <li class="file"><a href="/2018/05/10/angular2/13-服务/">13-服务</a></li>  <li class="file"><a href="/2018/05/10/angular2/04-项目启动过程/">04-项目启动</a></li>  <li class="file"><a href="/2018/05/10/angular2/15-动画/">15-动画</a></li>  <li class="file"><a href="/2018/05/10/angular2/14-表单/">14-表单处理</a></li>  <li class="file"><a href="/2018/05/10/angular2/17-i18n-国际化/">17-i18n</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-1-核心概念/">19-angular核心</a></li>  <li class="file"><a href="/2018/05/10/angular2/18-自动化测试/">18-自动化测试</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-2-angular-ui库/">20-ui库</a></li>  <li class="file"><a href="/2018/05/10/angular2/16-指令/">16-自定义指令</a></li>  <li class="file"><a href="/2018/05/10/angular2/999-核心知识点/">22-核心知识点</a></li>  <li class="file"><a href="/2018/05/10/angular2/11-路由操作/">11-路由</a></li>  <li class="file"><a href="/2018/05/10/angular2/300-3-优质学习资源收集/">21-angular优质学习资源</a></li>  <li class="file"><a href="/2018/05/10/angular2/12-数据请求/">12-数据请求</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ionic2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ionic2/03-ionic组件的使用-上/">03-组件使用上</a></li>  <li class="file"><a href="/2018/05/10/ionic2/06-主体化/">06-主题设置</a></li>  <li class="file"><a href="/2018/05/10/ionic2/02-ionic安装与使用/">02-ionic的安装与使用</a></li>  <li class="file"><a href="/2018/05/10/ionic2/05-组件补充/">05-导航</a></li>  <li class="file"><a href="/2018/05/10/ionic2/04-ionic组件的使用-下/">04-组件使用下</a></li>  <li class="file"><a href="/2018/05/10/ionic2/01-ionic概述/">01-ionic知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-mysql基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/01-mysql基础/01-mysql基础/">mysql 的基本使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-数据库和表的相关信息
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/02-数据库和表的相关信息/02-获取数据库和表的相关信息/">获取 数据库和表的相关信息</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-常见查询操作
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/mysql/03-常见查询操作/03-常见的查询的例子/">常见的查询</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            00-学习资料参考
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/00-学习资料参考/00-学习资料参考/">react优质学习资源</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-react入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/01-react入门/01-react入门/">react入门</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-jsx语法
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/02-jsx语法/02-jsx语法/">jsx语法</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-组件基本使用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/04-组件基本使用/04-组件基本使用/">组件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-state和生命周期
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/05-state和生命周期/05-state和生命周期/">state和生命周期</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-组件传值
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/06-组件传值/06-组件传值/">组件传值</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-组件补充
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/07-组件补充/07-组件补充/">组件补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-数据请求
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/08-数据请求/08-fetchApi-数据请求/">react数据请求</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-form
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/10-form/10-forms/">forms</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/12-router/12-router/">react-router</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            16-redux
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/16-redux/16-redux/">redux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            21-状态提升
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/21-状态提升/21-状态提升/">状态提升</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            22-组合和继承
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/22-组合和继承/22-组合和继承/">组合和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            23-react编程思想
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/23-react编程思想/23-react编程思想/">react编程思想</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            555-开发环境搭建
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/08/react/555-开发环境搭建/555-1-react基本开发环境搭建/">基本开发环境</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ts
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-ts入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/01-ts入门/01-typescript入门/">typescript知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-类型注解
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/02-类型注解/02-类型注解/">强类型和类型注解</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-接口
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/03-接口/03-接口/">接口</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            04-类
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/04-类/04-类/">类和继承</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-模块化
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/05-模块化/05-模块化/">模块化</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-装饰器
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/06-装饰器/06-装饰器/">装饰器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-简单总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/ts/07-简单总结/07-简单总结/">ts简单总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            01-vue入门
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/01-vue入门/01-vueStart/">vue入门</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            02-vueBase
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/02-vueBase/02-base1/">02-vue基础</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            03-directive
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/03-directive/03-directive/">03-vue指令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            04-base2
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2018/05/10/vue/04-base2/04-base2/">04-计算属性</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            05-filter
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/05-filter/05-filter/">05-filter</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            06-响应原理和过渡
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/06-响应原理和过渡/06-vuePro1/">06-深入理解- version1</a></li>  <li class="file"><a href="/2018/05/10/vue/06-响应原理和过渡/06-vuePro3/">06-深入理解- version1</a></li>  <li class="file"><a href="/2018/05/10/vue/06-响应原理和过渡/06-vuePro2-内容完整版/">06-深入理解- version1</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            07-组件上
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/07-组件上/07-component1/">07-组件上</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            08-组件下
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/08-组件下/08-component2/">08-组件下</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            09-router
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/09-router/09-vue-router/">09-路由</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            10-http
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/10-http/10-1-vue-resource/">10-http</a></li>  <li class="file"><a href="/2018/05/10/vue/10-http/10-2-1-promise/">10-promise</a></li>  <li class="file"><a href="/2018/05/10/vue/10-http/10-2-2-promise/">10-promise</a></li>  <li class="file"><a href="/2018/05/10/vue/10-http/10-3-axios/">10-axios</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            11-vuex
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/11-vuex/11-vuex/">11-vuex</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            12-webpack
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/12-webpack/12-webpack/">12-webpack</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            13-singlePage-es6
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/13-singlePage-es6/13-singleFile-es6/">13-es6</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            14-vue-cli
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/14-vue-cli/14-vue-cli/">14-模板</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            15-UI库
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/15-UI库/15-Muse UI/">15-ui</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            201-虚拟动漫
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/201-虚拟动漫/201-虚拟dom原理/">16-虚拟dom</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            202-axios扩展
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/202-axios扩展/202-axios补充/">201-axios补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            203-render
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/203-render/203-render/">203-render</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            300-插件系统
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/300-插件系统/300-插件系统/">300-插件</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            301-补充
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/301-补充/301-补充/">301-补充</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            501-框架描述
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/501-框架描述/501-几种框架的简单描述/">501-几种框架 的简单介绍</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            502-其他
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/vue/502-其他/20-conclude/">20-总结</a></li>  <li class="file"><a href="/2018/05/10/vue/502-其他/502-笔记/">502-笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            weChat
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/weChat/01-入门/">01-微信小程序入门</a></li>  <li class="file"><a href="/2018/05/10/weChat/04-组件/">04-微信小程序组件</a></li>  <li class="file"><a href="/2018/05/10/weChat/03-豆瓣电影的基本实现/">03-小程序开发实战</a></li>  <li class="file"><a href="/2018/05/10/weChat/02-基本知识点/">02-基础知识点</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂项
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2018/05/10/杂项/99-2-websocket/">WebSocket</a></li>  <li class="file"><a href="/2018/05/10/杂项/99-1-cros-proxy-jsonp/">跨域问题解决方案</a></li>  <li class="file"><a href="/2018/05/10/杂项/88-1-flex+rem/">移动端布局</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2018/05/08/hello-world/">介绍</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-vue/04-base2/04-base2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/vue/">vue</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/vue/04-base2/">04-base2</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/10/vue/04-base2/04-base2/">
+            <time datetime="2018-05-10T01:32:34.952Z" itemprop="datePublished">2018-05-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/vue/04-base2/04-base2.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/vue/04-base2/04-base2.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/vue/04-base2/04-base2.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            04-计算属性
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="第四部分-Vue-js基础特性（下）"><a href="#第四部分-Vue-js基础特性（下）" class="headerlink" title="第四部分 Vue.js基础特性（下）"></a>第四部分 Vue.js基础特性（下）</h1><h2 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性 computed"></a>计算属性 <strong>computed</strong></h2><blockquote>
+<p>data,el,methods属性一样,都是vm实例的属性(选项)</p>
+<blockquote>
+<p>理解其大致意思即可</p>
+</blockquote>
+</blockquote>
+<h3 id="绑定表达式"><a href="#绑定表达式" class="headerlink" title="绑定表达式"></a>绑定表达式</h3><blockquote>
+<p>一段绑定表达式可以由一个简单的js表达式和可选的一个或多个过滤器组成</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;script src=&quot;../node_modules/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">	        &lt;!--字符串拼接--&gt;</span><br><span class="line">	        &lt;p&gt;&#123;&#123; message + &quot;----&quot; + name &#125;&#125;&lt;/p&gt;</span><br><span class="line">	        &lt;!--三元运算符--&gt;</span><br><span class="line">	        &lt;p&gt;&#123;&#123; bool ? 1 : 0 &#125;&#125;&lt;/p&gt;</span><br><span class="line">	        &lt;!--四则运算--&gt;</span><br><span class="line">	        &lt;p&gt;&#123;&#123; num * 2 &#125;&#125;&lt;/p&gt;</span><br><span class="line">	    &lt;/div&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //创建Vue对象</span><br><span class="line">    var app =new Vue (&#123;</span><br><span class="line">        el:&apos;#app&apos;,//将Vue对象绑定到指定的选择器</span><br><span class="line">        data:&#123;</span><br><span class="line">            message: &apos;hello world &apos;,</span><br><span class="line">            name:&apos;高辉&apos;,</span><br><span class="line">            bool: true,</span><br><span class="line">            num:10</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面已经讲解过绑定表达式的相关知识点,即在 <strong></strong>内部支持js表达式</p>
+</blockquote>
+<blockquote>
+<p> 内的表达式是非常便利的，但是它们实际上只用于简单的运算,并且只能够支持单个js表达式,多个就会报错。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>在模板中放入太多的逻辑会让模板过重且难以维护。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;example&quot;&gt;</span><br><span class="line">  &#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在这种情况下，模板不再简单和清晰。在意识到这是反向显示 message 之前，你不得不再次确认第二遍。当你想要在模板中多次反向显示 message 的时候，问题会变得更糟糕。</p>
+</blockquote>
+<h3 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h3><p><strong>针对这些复杂的逻辑,提出了计算属性这一要求</strong></p>
+<blockquote>
+<p>也就是说,将我们复杂的计算逻辑提取出来</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">            &lt;!--在这里加入模型数据--&gt;</span><br><span class="line">            &lt;h2&gt;正常情况下的结果:&#123;&#123; message &#125;&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;!--正常情况下,模板结构变得复杂,特别是在多次使用复杂逻辑的时候--&gt;</span><br><span class="line">            &lt;h2&gt;&#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;!--使用计算属性,使模板更简洁--&gt;</span><br><span class="line">            &lt;h2&gt;&#123;&#123; reverseMessage &#125;&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">       //我们可以像绑定普通属性那样绑定计算属性:计算属性定义在computed内部,和data类似</span><br><span class="line">        computed: &#123;</span><br><span class="line">        	//在这里,我们将计算的逻辑提取出来,封装成一个函数,在函数的内部分使用return来定义返回值,返回计算的结构</span><br><span class="line">            reverseMessage: function() &#123;</span><br><span class="line">                return this.message.split(&quot;&quot;).reverse().join(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>大家是否还记得  v-on 和 methods呢?</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>要勤于复习哦!</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>你可能已经注意到我们可以通过调用表达式中的 method 来达到同样的效果：</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>在这里存在一些区别,涉及到缓存和性能的问题,下面我们将进行详细的讨论</strong></p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  reversedMessage: function () &#123;</span><br><span class="line">    return this.message.split(&apos;&apos;).reverse().join(&apos;&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="计算缓存-methods-vs-computed"><a href="#计算缓存-methods-vs-computed" class="headerlink" title="计算缓存  methods vs computed"></a>计算缓存  methods vs computed</h3><blockquote>
+<ol>
+<li>使用methods: 每次使用都会执行一次函数,不存在像计算属性那样的缓存,会浪费性能</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>计算属性的优点: 不同的计算属性是会基于他们的依赖进行缓存的,只有在依赖关系发生变化时,才会重新求值<blockquote>
+<p>当依赖关系没有发生变化时,不会重新求值,会使用上一次计算缓存的结果</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">            &lt;!--在这里加入模型数据--&gt;</span><br><span class="line">            &lt;h2&gt;正常情况下的结果:&#123;&#123; message &#125;&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;h2&gt;使用计算属性得出的结果:&#123;&#123; reverseMessageComputed &#125;&#125;&lt;/h2&gt;             </span><br><span class="line">            &lt;h2&gt;使用methods方法得出的结果:&#123;&#123; reverseMessageMethods() &#125;&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">        //计算属性的优点: 不同的计算属性是会基于他们的依赖进行缓存的,只有在依赖关系发生变化时,才会重新求值</span><br><span class="line">        //当依赖关系没有发生变化时,不会重新求值,会使用上一次计算缓存的结果</span><br><span class="line">        computed: &#123;</span><br><span class="line">            reverseMessageComputed: function() &#123;</span><br><span class="line">                return this.message.split(&quot;&quot;).reverse().join(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        //使用methods: 每次使用都会执行一次函数,不存在像计算属性那样的缓存,会浪费性能</span><br><span class="line">        methods: &#123;</span><br><span class="line">            reverseMessageMethods: function() &#123;</span><br><span class="line">                return this.message.split(&quot;&quot;).reverse().join(&quot;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="computed-vs-methods的缓存效果演示"><a href="#computed-vs-methods的缓存效果演示" class="headerlink" title="computed  vs methods的缓存效果演示"></a>computed  vs methods的缓存效果演示</h3><p><strong>通过这个演示,你需要知道,对于一些单只需要纯的计算获取结果的内容,使用计算属性,能够提高性能,尤其是一些性能耗费比较严重的问题</strong></p>
+<blockquote>
+<p>一次增加绑定的数据的个数,根据渲染的时间来判定不同的效果</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>computed: 在增加绑定数据的个数的时候,渲染的时间基本不会变化(依赖关系没有发生变化)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>methods: 在增加绑定数据的个数的时候,渲染的时间会随着渲染的次数的增加而递增(依赖关系没有发生变化)</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var startTime = Date.now()</span><br><span class="line">    var str =</span><br><span class="line">        &apos;&#123;&#123; reverseMessageMethods()  &#125;&#125;&#123;&#123; reverseMessageMethods()  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageMethods()  &#125;&#125;&#123;&#123; reverseMessageMethods()  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageMethods()  &#125;&#125;&#123;&#123; reverseMessageMethods()  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageMethods()  &#125;&#125;&#123;&#123; reverseMessageMethods()  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageMethods()  &#125;&#125;&#123;&#123; reverseMessageMethods()  &#125;&#125;&apos;;</span><br><span class="line">    document.getElementById(&quot;app&quot;).innerHTML = str;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">        //使用methods: 每次使用都会执行一次函数,不存在像计算属性那样的缓存,会浪费性能</span><br><span class="line">        methods: &#123;</span><br><span class="line">            reverseMessageMethods: function() &#123;</span><br><span class="line">                function fn(n) &#123;</span><br><span class="line">                    if(n === 1) &#123;</span><br><span class="line">                        return 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(n === 2) &#123;</span><br><span class="line">                        return 1;</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        return fn(n - 1) + fn(n - 2);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                var num = fn(35)</span><br><span class="line">                return num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    //-----------------计算属性-----缓存演示</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    var endTime = Date.now()</span><br><span class="line">    console.log(endTime - startTime)</span><br><span class="line">    var startTime = Date.now()</span><br><span class="line">    var str1 =</span><br><span class="line">        &apos;&#123;&#123; reverseMessageComputed  &#125;&#125;&#123;&#123; reverseMessageComputed  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageComputed  &#125;&#125;&#123;&#123; reverseMessageComputed  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageComputed  &#125;&#125;&#123;&#123; reverseMessageComputed  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageComputed  &#125;&#125;&#123;&#123; reverseMessageComputed  &#125;&#125;&apos; +</span><br><span class="line">        &apos;&#123;&#123; reverseMessageComputed  &#125;&#125;&#123;&#123; reverseMessageComputed  &#125;&#125;&apos;;</span><br><span class="line">    document.getElementById(&quot;app&quot;).innerHTML = str1;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm1 = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">        //计算属性的优点: 不同的计算属性是会基于他们的依赖进行缓存的,只有在依赖关系发生变化时,才会重新求值</span><br><span class="line">        //当依赖关系没有发生变化时,不会重新求值,会使用上一次计算缓存的结果</span><br><span class="line">        computed: &#123;</span><br><span class="line">            reverseMessageComputed: function() &#123;</span><br><span class="line">                function fn(n) &#123;</span><br><span class="line">                    if(n === 1) &#123;</span><br><span class="line">                        return 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(n === 2) &#123;</span><br><span class="line">                        return 1;</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        return fn(n - 1) + fn(n - 2);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                var num = fn(35)</span><br><span class="line">                return num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    var endTime = Date.now()</span><br><span class="line">    console.log(endTime - startTime)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="watch属性"><a href="#watch属性" class="headerlink" title="watch属性"></a>watch属性</h3><blockquote>
+<p>vue提供的一种更通用的方式来观察和响应 Vue 实例上的数据变动的方式</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>通常更好的想法是使用 computed 属性而不是命令式的 watch 回调</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;h2&gt;watch监视:&#123;&#123; fullName &#125;&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; v-model=&quot;firstName&quot; /&gt;&lt;br /&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; v-model=&quot;lastName&quot; /&gt;&lt;br /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        firstName: &quot;firstName&quot;,</span><br><span class="line">        lastName: &quot;lastName&quot;,</span><br><span class="line">        fullName: &quot;firstName  lastName&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">        watch: &#123;</span><br><span class="line">            //在变量变化的时候,会自动执行这个函数    参数val就是绑定的值</span><br><span class="line">            firstName: function(val) &#123;</span><br><span class="line">                this.fullName = val + &apos; &apos; + this.lastName</span><br><span class="line">            &#125;,</span><br><span class="line">            //在这里:val获取的是执行该函数的元素的内容  参数val就是绑定的值</span><br><span class="line">            lastName: function(val) &#123;</span><br><span class="line">                this.fullName = this.firstName + &apos; &apos; + val</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="getter-和-setter属性-了解"><a href="#getter-和-setter属性-了解" class="headerlink" title="getter 和 setter属性 (了解)"></a>getter 和 setter属性 (了解)</h3><blockquote>
+<p>计算属性默认只有getter ,我们可以在需要的时候提供一个setter </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>也就是进行数据的读取和设置的操作</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>定义get和set方法,需要的时候直接调用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        a: 1</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">        computed: &#123;</span><br><span class="line">            //默认情况下,只会进行值的读取</span><br><span class="line">            aDouble: function() &#123;</span><br><span class="line">                return this.a * 2</span><br><span class="line">            &#125;,</span><br><span class="line">            //在需要的时候进行值的读取和设置</span><br><span class="line">            aPlus: &#123;</span><br><span class="line">                get: function() &#123;</span><br><span class="line">                    return this.a + 1;</span><br><span class="line">                &#125;,</span><br><span class="line">                set: function(v) &#123;</span><br><span class="line">                    this.a = v - 1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(vm.aPlus) //2---------执行的是值的读取,也就是默认进行值的读取getter</span><br><span class="line"></span><br><span class="line">    vm.aPlus = 100          //------------执行的是值的设置,也就是setter</span><br><span class="line"></span><br><span class="line">    console.log(vm.a) //99</span><br><span class="line"></span><br><span class="line">    //调用computed方法,在没有参数的时候,不需要添加参数,否则的话,会报错</span><br><span class="line">    console.log(vm.aDouble) //4 --------------执行的是值的读取</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="观察者-watchers-了解"><a href="#观察者-watchers-了解" class="headerlink" title="观察者 watchers(了解)"></a>观察者 watchers(了解)</h3><blockquote>
+<p>当然啦,一项技术或者是理念的提出都是有其依据的</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>虽然我们提到watch是有弊端的,但是其存在还有其具体的意义</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>我们配合下面这个例子做作一个简单的介绍</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/axios@0.12.0/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/lodash@4.13.1/lodash.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;watch-example&quot;&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">                Ask a yes/no question:</span><br><span class="line">                &lt;input v-model=&quot;question&quot;&gt;</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;&#123;&#123; answer &#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var watchExampleVM = new Vue(&#123;</span><br><span class="line">        el: &apos;#watch-example&apos;,</span><br><span class="line">        data: &#123;</span><br><span class="line">            question: &apos;&apos;,</span><br><span class="line">            answer: &apos;I cannot give you an answer until you ask a question!&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        watch: &#123;</span><br><span class="line">            // 如果 question 发生改变，这个函数就会运行</span><br><span class="line">            question: function(newQuestion) &#123;</span><br><span class="line">                this.answer = &apos;Waiting for you to stop typing...&apos;</span><br><span class="line">                this.getAnswer()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            // _.debounce 是一个通过 lodash 限制操作频率的函数。</span><br><span class="line">            // 在这个例子中，我们希望限制访问yesno.wtf/api的频率</span><br><span class="line">            // ajax请求直到用户输入完毕才会发出</span><br><span class="line">            // 学习更多关于 _.debounce function (and its cousin</span><br><span class="line">            // _.throttle), 参考: https://lodash.com/docs#debounce</span><br><span class="line">            getAnswer: _.debounce(</span><br><span class="line">                function() &#123;</span><br><span class="line">                    var vm = this</span><br><span class="line">                    if(this.question.indexOf(&apos;?&apos;) === -1) &#123;</span><br><span class="line">                        vm.answer = &apos;Questions usually contain a question mark. ;-)&apos;</span><br><span class="line">                        return</span><br><span class="line">                    &#125;</span><br><span class="line">                    vm.answer = &apos;Thinking...&apos;</span><br><span class="line">                    axios.get(&apos;https://yesno.wtf/api&apos;)</span><br><span class="line">                        .then(function(response) &#123;</span><br><span class="line">                            vm.answer = _.capitalize(response.data.answer)</span><br><span class="line">                        &#125;)</span><br><span class="line">                        .catch(function(error) &#123;</span><br><span class="line">                            vm.answer = &apos;Error! Could not reach the API. &apos; + error</span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;,</span><br><span class="line">                // 这是我们为用户停止输入等待的毫秒数</span><br><span class="line">                500</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在这个示例中，使用 watch 选项允许我们执行异步操作（访问一个 API），<br>限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这是计算属性无法做到的。</p>
+</blockquote>
+<h2 id="事件绑定与监听"><a href="#事件绑定与监听" class="headerlink" title="事件绑定与监听"></a>事件绑定与监听</h2><blockquote>
+<p>之前我们已经讲解过v-on这个指令,可以监听dom,触发js代码,在这里我们先做一个简单的回顾</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">            &lt;!--在这里加入模型数据--&gt;</span><br><span class="line">            &#123;&#123; message &#125;&#125;</span><br><span class="line"></span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;button v-on:click=&quot;clickNum = clickNum + 1&quot;&gt;click me!&lt;/button&gt;</span><br><span class="line">                &lt;li&gt;这个按钮呗点击了 &#123;&#123;clickNum&#125;&#125; 次&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;,</span><br><span class="line">        clickNum: 0</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="方法和事件处理器"><a href="#方法和事件处理器" class="headerlink" title="方法和事件处理器"></a>方法和事件处理器</h3><blockquote>
+<p>通过v-on可以绑定方法,方法支持传参</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有时候,我们需要访问原生的dom事件,需要使用特殊变量$event将它传入方法</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	    &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">	        &lt;!--在这里加入模型数据--&gt;</span><br><span class="line">	        &#123;&#123; message &#125;&#125;</span><br><span class="line">	        </span><br><span class="line">	        &lt;!--不带参数--&gt;</span><br><span class="line">	        &lt;button v-on:click=&quot;sayHi1&quot;&gt;不带参数&lt;/button&gt;</span><br><span class="line">	        </span><br><span class="line">	        &lt;!--带参数--&gt;</span><br><span class="line">	        &lt;button v-on:click=&quot;sayHi2(&apos;say what&apos;)&quot;&gt;带参数&lt;/button&gt;</span><br><span class="line">	        </span><br><span class="line">	        &lt;!--使用原生dom事件,传递$event这个特殊参数--&gt;</span><br><span class="line">	        &lt;button v-on:click=&quot;sayHi3(&apos;say what&apos;,$event)&quot;&gt;特殊参数&lt;/button&gt;</span><br><span class="line">	        </span><br><span class="line">	    &lt;/div&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    </span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm= new Vue(&#123;</span><br><span class="line">        el:&apos;#app&apos;,</span><br><span class="line">        data:dataModel,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            sayHi1:function()&#123;</span><br><span class="line">                console.log(&quot;hello&quot;)</span><br><span class="line">            &#125;,</span><br><span class="line">            sayHi2:function(msg)&#123;</span><br><span class="line">                console.log(msg)</span><br><span class="line">            &#125;,</span><br><span class="line">            sayHi3:function(msg,event)&#123;</span><br><span class="line">                console.log(msg,event.target)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //通过js调用处理,和上面得到的结果是相同的</span><br><span class="line">    //区别是: 点击执行(事件处理函数)与直接执行</span><br><span class="line">    </span><br><span class="line">    vm.sayHi1(&quot;test&quot;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><blockquote>
+<p>之前我们提到过一些指令的修饰符,和这里的修饰符都是类似的东西,帮助我们解决一些实际的问题</p>
+</blockquote>
+<h4 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h4><blockquote>
+<p>在事件处理程序中调用 event.preventDefault() 或 event.stopPropagation() 是非常常见的需求。<br>尽管我们可以在 methods 中轻松实现这点，但更好的方式是：methods 只有纯粹的数据逻辑，而不是去处理 DOM 事件细节。</p>
+<blockquote>
+<p>为了解决这个问题， Vue.js 为 v-on 提供了 事件修饰符。通过由点(.)表示的指令后缀来调用修饰符。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">            &lt;!--在这里加入模型数据--&gt;</span><br><span class="line">            &#123;&#123; message &#125;&#125;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 阻止单击事件冒泡 --&gt;</span><br><span class="line">            &lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;!-- 提交事件不再重载页面 --&gt;</span><br><span class="line">            &lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;!-- 修饰符可以串联  --&gt;</span><br><span class="line">            &lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;!-- 只有修饰符 --&gt;</span><br><span class="line">            &lt;form v-on:submit.prevent&gt;&lt;/form&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;!-- 添加事件侦听器时使用事件捕获模式 --&gt;</span><br><span class="line">            &lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 --&gt;</span><br><span class="line">            &lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 点击事件将只会触发一次 --&gt;</span><br><span class="line">            &lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line">    </span><br><span class="line">.stop:  event.stopPropagation()</span><br><span class="line">.prevent   event.preventDefault()</span><br><span class="line">.capture  : 捕获</span><br><span class="line">.self   : 只有当该元素是事件本身时触发回调</span><br><span class="line">.once  : 只会触发一次</span><br><span class="line">     </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h4><blockquote>
+<p>同样的,在按键事件中也给我们提供了一些较为便利的操作(修饰符)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.enter</span><br><span class="line">.tab</span><br><span class="line">.delete (捕获 “删除” 和 “退格” 键)</span><br><span class="line">.esc</span><br><span class="line">.space</span><br><span class="line">.up</span><br><span class="line">.down</span><br><span class="line">.left</span><br><span class="line">.right   </span><br><span class="line"> -------------------------------------------------支持链式写法</span><br><span class="line"> </span><br><span class="line"> 2.1.0新增</span><br><span class="line"> .ctrl</span><br><span class="line">.alt</span><br><span class="line">.shift</span><br><span class="line">.meta:   对应的是window键</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>简单演示</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">            &lt;!--在这里加入模型数据--&gt;</span><br><span class="line">            &#123;&#123; message &#125;&#125;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 只有在keyCode的值是13时  调用vm.submit    13:回车键/enter键--&gt;</span><br><span class="line">            &lt;input v-on:keyup.13=&quot;submit&quot;&gt;&lt;/input&gt;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 同上   支持链式写法--&gt;</span><br><span class="line">            &lt;input v-on:keyup.enter=&quot;submit&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;!-- 缩写语法 --&gt;</span><br><span class="line">            &lt;input @keyup.enter=&quot;submit&quot;&gt;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var dataModel = &#123;</span><br><span class="line">        message: &apos;hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">        el: &apos;#app&apos;,</span><br><span class="line">        data: dataModel,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            submit: function() &#123;</span><br><span class="line">                console.log(&quot;submit&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    /**</span><br><span class="line">     * </span><br><span class="line">     *可以通过全局 config.keyCodes 对象自定义按键修饰符别名：</span><br><span class="line">     * </span><br><span class="line">     * </span><br><span class="line">     */</span><br><span class="line">    </span><br><span class="line">    Vue.config.keyCodes.f1 =112;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="与传统事件绑定的区别"><a href="#与传统事件绑定的区别" class="headerlink" title="与传统事件绑定的区别"></a>与传统事件绑定的区别</h3><blockquote>
+<p>你可能注意到这种事件监听的方式违背了关注点分离（separation of concern）传统理念。</p>
+</blockquote>
+<p>不必担心，因为所有的 Vue.js 事件处理方法和表达式都严格绑定在当前视图的 ViewModel 上，它不会导致任何维护上的困难。</p>
+<p>实际上，使用 v-on 有几个好处：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 扫一眼 HTML 模板便能轻松定位在 JavaScript 代码里对应的方法。</span><br><span class="line"></span><br><span class="line">2. 因为你无须在 JavaScript 里手动绑定事件，你的 ViewModel 代码可以是非常纯粹的逻辑，和 DOM 完全解耦，更易于测试。</span><br><span class="line"></span><br><span class="line">3. 当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何自己清理它们。</span><br></pre></td></tr></table></figure>
+<h2 id="new-Vue-和Vue-extend"><a href="#new-Vue-和Vue-extend" class="headerlink" title="new Vue()和Vue.extend()"></a>new Vue()和Vue.extend()</h2><blockquote>
+<p>之前我们讲解到,vue的两大特性: <strong>数据的 双向绑定和组件化</strong></p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>在这里,我们对组件化进行更深一步的了解</p>
+</blockquote>
+</blockquote>
+<h3 id="new-Vue"><a href="#new-Vue" class="headerlink" title="new Vue()"></a>new Vue()</h3><blockquote>
+<p>new Vue()创建的是vue的一个实例,之前我们提到过,vue是只关注视图层</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>我们可以将页面看成是一个大的根组件,里面包含的元素就是<strong>子组件</strong>,子组件可以在不同的根组件中被调用</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>那么,如何创建子组件呢,这个是我们需要关注的主题</p>
+</blockquote>
+<h3 id="Vue-extend"><a href="#Vue-extend" class="headerlink" title="Vue.extend()"></a>Vue.extend()</h3><blockquote>
+<p>在vue中给我们提供的创建组价的方式,</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>在这里,我们先了解一下这个方法,之后再做详细的讲解</p>
+</blockquote>
+</blockquote>
+<h3 id="两者的共性"><a href="#两者的共性" class="headerlink" title="两者的共性"></a>两者的共性</h3><blockquote>
+<p>构造器</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>每个 Vue.js 应用的起步都是通过构造函数 Vue 创建一个 Vue 的根实例(根组件)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>可以扩展 Vue 构造器，从而用预定义选项创建可复用的组件构造器</p>
+</blockquote>
+</blockquote>
+<p><img src="img/06-构造器.bmp" alt="构造器"></p>
+<p><strong>我们配合下面这个简单的例子做一下简单的分析</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;&lt;/title&gt;</span><br><span class="line">        &lt;!--引入js--&gt;</span><br><span class="line">        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">    </span><br><span class="line">    vue这个对象可以进行扩展</span><br><span class="line">    </span><br><span class="line">    相当于在原先的vue的基础上添加新的内容,形成我们自己的,别具一格的vue</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">--&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    </span><br><span class="line">    //1. 扩展vue对象</span><br><span class="line">    var vueExtend = Vue.extend(&#123;</span><br><span class="line">        //----定义扩展的vue的对象的内容</span><br><span class="line">        template:&apos;&lt;div&gt;&lt;a href=&quot;#&quot;&gt;注册&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;登录&lt;/a&gt;&lt;/div&gt;&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">   </span><br><span class="line">    //3. 创建根实例</span><br><span class="line">    var vm = new vueExtend(&#123;</span><br><span class="line">        el:&apos;#app&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/05/10/vue/05-filter/05-filter/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    05-filter
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/10/vue/03-directive/03-directive/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">03-vue指令</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            GaoHui &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo-GaoHuiWiki</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
