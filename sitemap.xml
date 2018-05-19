@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/05/08/react/02-jsx%E8%AF%AD%E6%B3%95/02-jsx%E8%AF%AD%E6%B3%95/</loc>
+    
+    <lastmod>2018-05-19T00:51:53.401Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/05/10/vue/06-%E5%93%8D%E5%BA%94%E5%8E%9F%E7%90%86%E5%92%8C%E8%BF%87%E6%B8%A1/06-vuePro3/</loc>
     
     <lastmod>2018-05-10T02:20:50.202Z</lastmod>
@@ -754,13 +761,6 @@
     <loc>http://yoursite.com/2018/05/08/react/04-%E7%BB%84%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/04-%E7%BB%84%E4%BB%B6%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2018-05-08T00:39:42.075Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/05/08/react/02-jsx%E8%AF%AD%E6%B3%95/02-jsx%E8%AF%AD%E6%B3%95/</loc>
-    
-    <lastmod>2018-05-08T00:39:25.715Z</lastmod>
     
   </url>
   
